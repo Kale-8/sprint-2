@@ -61,3 +61,19 @@ git push origin feature/HU-001-crear-login
 # Crear PR hacia main-sam
 # Revisar, aprobar y fusionar
 ```
+
+
+# RIWI Sportsline - Migración a NestJS
+
+## Setup inicial
+
+1. Proyecto creado con Nest CLI.
+2. Configuración de entorno con `.env` y `ConfigModule`.
+3. Integración de TypeORM con PostgreSQL.
+4. Entidad base `Usuario` creada.
+5. ESLint y Prettier configurados para mantener buenas prácticas.
+
+## Comandos útiles
+
+```bash
+npm run start:dev
