@@ -1,0 +1,13 @@
+# HU-001 - Checklist
+
+- [x] Crear rama feature/HU-001-setup-base desde main-[nombre]
+- [x] `.env.example` creado y documentado
+- [x] ConfigModule configurado (isGlobal: true)
+- [ ] DatabaseModule con TypeORM configurado
+- [ ] Entidad User creada y migrada
+- [ ] Endpoint de prueba funcionando (GET /user)
+- [ ] ESLint y Prettier configurados
+- [ ] Husky + lint-staged configurados
+- [ ] Scripts npm/pnpm en package.json verificados
+- [ ] README / docs actualizados con instrucciones
+- [ ] PR abierto hacia main-[nombre] con descripción y checklist
