@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsuarioModule } from './usuario/usuario.module';
+import { ProductoModule } from './producto/producto.module';
+import { ClienteModule } from './cliente/cliente.module';
+import { PedidoModule } from './pedido/pedido.module';
 
 // Aca estamos importando el ConfigModule para manejar variables de entorno y el TypeOrmModule
 //  para la conexion a la base de datos.
@@ -23,6 +26,9 @@ import { UsuarioModule } from './usuario/usuario.module';
       synchronize: true,
     }),
     UsuarioModule,
+    ProductoModule,
+    ClienteModule,
+    PedidoModule,
     // otros módulos
   ],
   controllers: [AppController],
