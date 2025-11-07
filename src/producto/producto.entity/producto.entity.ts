@@ -8,7 +8,7 @@ export class Producto {
 
   @Column()
   nombre: string;
-  
+
   @Column('decimal')
   precio: number;
 
