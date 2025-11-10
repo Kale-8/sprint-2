@@ -1,8 +1,35 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsuarioService } from './usuario.service';
+import { Usuario } from './usuario.entity';
 
 describe('UsuarioService', () => {
   let service: UsuarioService;
+  let mockRepo: any;
+
+beforeEach(() => {
+    mockRepo = {
+      create: jest.fn().mockImplementation((dto) => dto),
+      save: jest.fn().mockImplementation((usuario) => Promise.resolve({ id: 1, ...usuario })),
+      find: jest.fn().mockResolvedValue([{ id: 1, nombre: 'Laura' }]),
+    };
+
+    service = new UsuarioService(mockRepo);
+  });
+
+  it('debería crear un usuario', async () => {
+    const dto = { nombre: 'Laura', email: 'laura@mail.com', password: '123456' };
+    const result = await service.create(dto);
+
+    expect(result.email).toBe('laura@mail.com');
+    expect(mockRepo.save).toHaveBeenCalled();
+  });
+
+  it('debería listar usuarios', async () => {
+    const result = await service.findAll();
+
+    expect(result.length).toBeGreaterThan(0);
+    expect(mockRepo.find).toHaveBeenCalled();
+  });  
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -16,3 +43,6 @@ describe('UsuarioService', () => {
     expect(service).toBeDefined();
   });
 });
+  
+
+

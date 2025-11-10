@@ -1,5 +1,6 @@
 import { Controller, Get, Param, Post, Body } from '@nestjs/common';
 import { PedidoService } from './pedido.service';
+import { CreatePedidoDto } from './create-pedido.dto';
 
 @Controller('pedidos')
 export class PedidoController {
@@ -26,4 +27,14 @@ export class PedidoController {
     create(@Body() body: any) {
         return this.pedidoService.crearPedido(body);
     }
+
+    @Post()
+      createDto(@Body() dto: CreatePedidoDto) {
+        return this.pedidoService.create(dto);
+      }
+    
+      @Get()
+      findAll() {
+        return this.pedidoService.findAll();
+      }
 }
