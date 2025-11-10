@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from '@nestjs/config';
+import { UsersModule } from './modules/users/users.module';
 
 @Module({
     imports: [
@@ -19,7 +20,7 @@ import { ConfigService } from '@nestjs/config';
                 synchronize: configService.get<boolean>('database.synchronize'),
                 logging: configService.get<boolean>('database.logging'),
             }),
-        }),
+        }), UsersModule,
     ],
 })
 export class AppModule {}
