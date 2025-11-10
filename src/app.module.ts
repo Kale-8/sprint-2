@@ -3,6 +3,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from './config/config.module';
 import { ConfigService } from '@nestjs/config';
 import { UsersModule } from './modules/users/users.module';
+import { ProductsModule } from './modules/products/products.module';
+import { ClientsModule } from './modules/clients/clients.module';
+import { OrderModule } from './modules/order/order.module';
+import { OrderItemModule } from './modules/order-item/order-item.module';
+import { UsersModule } from './modules/users/users.module';
+import { RolesModule } from './modules/roles/roles.module';
+import { ClientsModule } from './modules/clients/clients.module';
+import { ProductsModule } from './modules/products/products.module';
+import { OrdersModule } from './modules/orders/orders.module';
 
 @Module({
     imports: [
@@ -20,7 +29,7 @@ import { UsersModule } from './modules/users/users.module';
                 synchronize: configService.get<boolean>('database.synchronize'),
                 logging: configService.get<boolean>('database.logging'),
             }),
-        }), UsersModule,
+        }), UsersModule, ProductsModule, ClientsModule, OrderModule, OrderItemModule, RolesModule, OrdersModule,
     ],
 })
 export class AppModule {}
