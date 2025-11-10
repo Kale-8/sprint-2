@@ -2,6 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PedidoRepository } from './pedido.crud';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Pedido } from './pedido.entity/pedido.entity';
+import { Repository } from 'typeorm';
+import { CreatePedidoDto } from './create-pedido.dto';
 
 @Injectable()
 export class PedidoService {
@@ -38,4 +40,17 @@ export class PedidoService {
         }
         return pedido;
     }
+
+    //Metodo para crear un nuevo pedido usando DTO
+    async create(dto: CreatePedidoDto): Promise<Pedido> {
+        const pedido = this.pedidoRepo.create(dto);
+        return this.pedidoRepo.save(pedido);
+    }
+
+    //Metodo para obtener todos los pedidos
+    async findAll(): Promise<Pedido[]> {
+        return this.pedidoRepo.find();
+    }
 }
+
+  
