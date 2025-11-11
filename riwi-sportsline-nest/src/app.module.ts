@@ -8,16 +8,21 @@ import { Product } from './products/product.entity';
 import { Client } from './clients/client.entity';
 import { Order } from './orders/order.entity';
 import { OrderItem } from './orders/order-item.entity';
-import { UsersService } from './users/users.service';
-import { ProductsService } from './products/products.service';
-import { ClientsService } from './clients/clients.service';
-import { OrdersService } from './orders/orders.service';
+import { UsersModule } from './users/users.module';
+import { ProductsModule } from './products/products.module';
+import { ClientsModule } from './clients/clients.module';
+import * as Joi from 'joi';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: ['.env'],
+      validationSchema: Joi.object({
+        NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
+        PORT: Joi.number().port().default(3000),
+        DATABASE_URI: Joi.string().uri().required(),
+      }),
     }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
@@ -30,8 +35,11 @@ import { OrdersService } from './orders/orders.service';
       }),
     }),
     TypeOrmModule.forFeature([User, Product, Client, Order, OrderItem]),
+    UsersModule,
+    ProductsModule,
+    ClientsModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersService, ProductsService, ClientsService, OrdersService],
+  providers: [AppService],
 })
 export class AppModule {}
