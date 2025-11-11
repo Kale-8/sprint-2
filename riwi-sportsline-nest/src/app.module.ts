@@ -4,6 +4,14 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './users/user.entity';
+import { Product } from './products/product.entity';
+import { Client } from './clients/client.entity';
+import { Order } from './orders/order.entity';
+import { OrderItem } from './orders/order-item.entity';
+import { UsersService } from './users/users.service';
+import { ProductsService } from './products/products.service';
+import { ClientsService } from './clients/clients.service';
+import { OrdersService } from './orders/orders.service';
 
 @Module({
   imports: [
@@ -21,9 +29,9 @@ import { User } from './users/user.entity';
         logging: false,
       }),
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Product, Client, Order, OrderItem]),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UsersService, ProductsService, ClientsService, OrdersService],
 })
 export class AppModule {}
