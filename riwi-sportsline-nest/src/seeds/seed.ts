@@ -3,6 +3,7 @@ import { AppDataSource } from '../../data-source';
 import { User } from '../users/user.entity';
 import { Client } from '../clients/client.entity';
 import { Product } from '../products/product.entity';
+import { hashString } from '../common/utils/hash.util';
 
 async function run() {
   await AppDataSource.initialize();
@@ -13,10 +14,11 @@ async function run() {
 
     const adminExists = await userRepo.findOne({ where: { email: 'admin@riwi.co' } });
     if (!adminExists) {
+      const hashed = await hashString('changeme');
       await userRepo.save(userRepo.create({
         nombre: 'Admin',
         email: 'admin@riwi.co',
-        passwordHash: 'changeme',
+        passwordHash: hashed,
         rol: 'admin',
       }));
     }

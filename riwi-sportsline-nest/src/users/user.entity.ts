@@ -20,6 +20,9 @@ export class User {
   @Column({ type: 'enum', enum: ['admin', 'vendedor'] })
   rol!: UserRole;
 
+  @Column({ name: 'refreshTokenHash', type: 'varchar', length: 255, nullable: true })
+  refreshTokenHash!: string | null;
+
   @CreateDateColumn({ name: 'createdAt', type: 'timestamp with time zone' })
   createdAt!: Date;
 

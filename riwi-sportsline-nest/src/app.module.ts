@@ -13,6 +13,7 @@ import { ProductsModule } from './products/products.module';
 import { ClientsModule } from './clients/clients.module';
 import * as Joi from 'joi';
 import { AuditMiddleware } from './common/middleware/audit.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { AuditMiddleware } from './common/middleware/audit.middleware';
     UsersModule,
     ProductsModule,
     ClientsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
