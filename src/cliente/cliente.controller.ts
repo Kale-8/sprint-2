@@ -1,7 +1,9 @@
-import { Controller, Post, Body, Get  } from '@nestjs/common';
+import { Controller, Post, Body, Get, NotFoundException, UseFilters } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './create-cliente.dto';
+import { GlobalExceptionFilter } from '../filter-ManejoErrores/http-exception.filter';
 
+@UseFilters(GlobalExceptionFilter) // ⛑️ Aplicar el filtro de excepciones a este controlador para los errores.
 @Controller('cliente')
 export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {}
