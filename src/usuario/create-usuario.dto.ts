@@ -12,4 +12,7 @@ export class CreateUsuarioDto {
   @IsString()
   @MinLength(6)
   password: string;
+
+   @IsString()
+   role?: string;
 }

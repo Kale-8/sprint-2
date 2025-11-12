@@ -4,7 +4,7 @@ import { GlobalExceptionFilter } from './filter-ManejoErrores/http-exception.fil
 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule); // Crear la aplicación NestJS
   await app.listen(process.env.PORT ?? 3000);  // Puerto configurable con variable de entorno
   app.useGlobalFilters(new GlobalExceptionFilter()); // ⛑️ Aquí se activa el manejo global de errores(FILTER)
 
