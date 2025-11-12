@@ -27,7 +27,7 @@ export class GlobalExceptionFilter implements ExceptionFilter {
       statusCode: status,          //código HTTP (404, 500, etc.)
       timestamp: new Date().toISOString(),  //Hora del error en formato ISO
       path: request.url,            //Ruta que causo el error
-      error: message,              //Mensaje de error detallado
+      message: message,              //Mensaje de error detallado
     });
   }
 }
