@@ -10,4 +10,10 @@ export class Usuario {
 
   @Column()
   email: string;
+
+  @Column()
+  password: string;
+
+  @Column({ default: 'cliente' }) //Rol por defecto
+  role: string;
 }

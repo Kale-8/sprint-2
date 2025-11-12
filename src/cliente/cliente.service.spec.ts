@@ -1,48 +1,62 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ClienteService } from './cliente.service';
 import { Cliente } from './cliente.entity/cliente.entity';
-
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 describe('ClienteService', () => {
   let service: ClienteService;
-  let mockRepo: any;
+  let repo: Repository<Cliente>;
 
-  beforeEach(() => {
-    mockRepo = {
-      create: jest.fn().mockImplementation((dto) => dto),
-      save: jest.fn().mockImplementation((cliente) => Promise.resolve({ id: 1, ...cliente })),
-      find: jest.fn().mockResolvedValue([{ id: 1, nombre: 'Steven' }]),
-    };
-
-    service = new ClienteService(mockRepo);
-  });
-
-  it('debería crear un cliente', async () => {
-    const dto = { nombre: 'Steven', direccion: 'Medellín' };
-    const result = await service.create(dto);
-
-    expect(result.nombre).toBe('Steven');
-    expect(mockRepo.save).toHaveBeenCalled();
-  });
-
-  it('debería listar clientes', async () => {
-    const result = await service.findAll();
-
-    expect(result.length).toBeGreaterThan(0);
-    expect(mockRepo.find).toHaveBeenCalled();
-  });
+  const mockRepo = {
+    find: jest.fn(),
+    findOne: jest.fn(),
+    create: jest.fn(),
+    save: jest.fn(),
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ClienteService],
+      providers: [
+        ClienteService,
+        {
+          provide: getRepositoryToken(Cliente),
+          useValue: mockRepo,
+        },
+      ],
     }).compile();
 
     service = module.get<ClienteService>(ClienteService);
+    repo = module.get<Repository<Cliente>>(getRepositoryToken(Cliente));
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
-});
 
-  
+  it('debería crear un cliente', async () => {
+    const dto = { nombre: 'Steven', direccion: 'Calle 123' };
+    const cliente = { id: 1, nombre: 'Steven', direccion: 'Calle 123' };
+
+    mockRepo.create.mockReturnValue(cliente);
+    mockRepo.save.mockResolvedValue(cliente);
+
+    const result = await service.create(dto);
+    expect(result).toEqual(cliente);
+    expect(mockRepo.create).toHaveBeenCalledWith(dto);
+    expect(mockRepo.save).toHaveBeenCalledWith(cliente);
+  });
+
+  it('debería listar clientes', async () => {
+    const clientes = [{ id: 1, nombre: 'Steven' }];
+    mockRepo.find.mockResolvedValue(clientes);
+
+    const result = await service.findAll();
+    expect(result).toEqual(clientes);
+    expect(mockRepo.find).toHaveBeenCalledTimes(1);
+  });
+});

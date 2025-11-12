@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
@@ -7,6 +7,8 @@ import { UsuarioModule } from './usuario/usuario.module';
 import { ProductoModule } from './producto/producto.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { PedidoModule } from './pedido/pedido.module';
+import { LoggerMiddleware } from './middleware/logger.middleware';
+
 
 // Aca estamos importando el ConfigModule para manejar variables de entorno y el TypeOrmModule
 //  para la conexion a la base de datos.
@@ -34,7 +36,9 @@ import { PedidoModule } from './pedido/pedido.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
 
-
-
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {//permite aplicar middlewares a rutas.
+    consumer.apply(LoggerMiddleware).forRoutes('*'); // 🔍 Aplica a todas las rutas
+  }
+}
