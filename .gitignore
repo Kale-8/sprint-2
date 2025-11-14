@@ -45,6 +45,7 @@ tmp/
 temp/
 *.tmp
 
+
 # PM2 / procesos
 pids/
 *.pid
