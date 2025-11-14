@@ -1,5 +1,7 @@
 //Este archvivo es necesario para las migraciones y los seeders de TypeORM
 //Este archivo es para tiempo de desarrollo, no para produccion
+//Y hay que agregar esta linea   "migration:run": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run -d ./data-source.ts"
+//para poder ejecutar las migraciones con el comando: npm run migration:run
 import { DataSource } from 'typeorm';
 import { Usuario } from './src/usuario/usuario.entity';
 import { Producto } from './src/producto/producto.entity/producto.entity';

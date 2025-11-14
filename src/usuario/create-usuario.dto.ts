@@ -1,3 +1,4 @@
+//Este archivo define el DTO para crear un nuevo usuario
 import { IsString, IsEmail, MinLength } from 'class-validator';
 import { Transform } from 'class-transformer';
 
