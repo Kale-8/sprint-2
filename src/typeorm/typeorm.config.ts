@@ -7,14 +7,15 @@ const entities = [User];
 export default class TypeOrmConfig {
   static getOrmConfig(config: ConfigService): TypeOrmModuleOptions {
     return {
-      type: 'mysql',
-      host: config.get('DB_HOST'),
-      port: +config.get('DB_PORT'),
-      username: config.get('DB_USERNAME'),
-      password: config.get('DB_PASSWORD'),
-      database: config.get('DB_DATABASE'),
+      type: 'postgres',
+      host: config.get('DB_HOST', 'localhost'),
+      port: +config.get('DB_PORT', 5432),
+      username: config.get('DB_USERNAME', 'postgres'),
+      password: config.get('DB_PASSWORD', 'postgres'),
+      database: config.get('DB_DATABASE', 'sportline2'),
       entities: entities,
-      synchronize: true,
+      synchronize: config.get('NODE_ENV') !== 'production',
+      logging: true,
     };
   }
 }
