@@ -13,9 +13,12 @@ export default class TypeOrmConfig {
       username: config.get('DB_USERNAME', 'postgres'),
       password: config.get('DB_PASSWORD', 'postgres'),
       database: config.get('DB_DATABASE', 'sportline2'),
-      entities: entities,
-      synchronize: config.get('NODE_ENV') !== 'production',
-      logging: true,
+
+      autoLoadEntities: true,
+      synchronize: false,
+
+      migrations: ['dist/database/migrations/*.js'],
+      migrationsRun: false,
     };
   }
 }
