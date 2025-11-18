@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="fixed: Arreglo de typeorm.config.ts">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="fixed: creacion entidad y módulo de users">
+      <change afterPath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main-Luan" />
+        <entry key="$PROJECT_DIR$" value="feature/HU001-crear-proyecto-config-module-Luan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -54,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/HU001-crear-proyecto-config-module-Luan",
+    "git-widget-placeholder": "feature/HU002-TypeORM-y-entidades-Luan",
     "last_opened_file_path": "/home/quiro66/WebstormProjects/sprint-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -96,7 +98,7 @@
       <updated>1763049689886</updated>
       <workItem from="1763049693766" duration="13086000" />
       <workItem from="1763425757240" duration="441000" />
-      <workItem from="1763441608050" duration="1523000" />
+      <workItem from="1763441608050" duration="3482000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -138,11 +140,42 @@
       <option name="project" value="LOCAL" />
       <updated>1763129102183</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed: creacion entidad y módulo de users">
+      <option name="closed" value="true" />
+      <created>1763444662235</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1763444662236</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/HU002-TypeORM-y-entidades-Luan" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creacion de main" />
@@ -150,7 +183,8 @@
     <MESSAGE value="creacion de carpeta configuration.ts y config.module.ts" />
     <MESSAGE value="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts" />
     <MESSAGE value="fixed: Arreglo de typeorm.config.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed: Arreglo de typeorm.config.ts" />
+    <MESSAGE value="fixed: creacion entidad y módulo de users" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed: creacion entidad y módulo de users" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
