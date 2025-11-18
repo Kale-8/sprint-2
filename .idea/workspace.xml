@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts">
-      <change beforePath="$PROJECT_DIR$/src/typeorm/typeorm.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typeorm/typeorm.config.ts" afterDir="false" />
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="fixed: Arreglo de typeorm.config.ts">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,21 +28,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Quiro66"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Quiro66&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Kale-8/sprint-2.git",
-    "accountId": "1aa30029-036c-4e56-9dba-fadcb2b43f52"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Kale-8/sprint-2.git&quot;,
+    &quot;accountId&quot;: &quot;1aa30029-036c-4e56-9dba-fadcb2b43f52&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="35QkT4OQdnJXgf7RJFPrDZEefBU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -49,6 +50,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Node.js.typeorm.config.ts.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -92,7 +94,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763049689886</updated>
-      <workItem from="1763049693766" duration="10480000" />
+      <workItem from="1763049693766" duration="13086000" />
+      <workItem from="1763425757240" duration="441000" />
+      <workItem from="1763441608050" duration="1523000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -126,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763127633938</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fixed: Arreglo de typeorm.config.ts">
+      <option name="closed" value="true" />
+      <created>1763129102183</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1763129102183</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +149,15 @@
     <MESSAGE value="creacion de proyecto" />
     <MESSAGE value="creacion de carpeta configuration.ts y config.module.ts" />
     <MESSAGE value="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts" />
+    <MESSAGE value="fixed: Arreglo de typeorm.config.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed: Arreglo de typeorm.config.ts" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
