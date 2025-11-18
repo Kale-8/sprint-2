@@ -18,6 +18,9 @@ export class Product {
   @Column({ type: 'int', default: 0 })
   stock: number;
 
+  @Column({ unique: true, length: 50 })
+  sku: string;
+
   //1:N
   @OneToMany(() => OrderItem, (item) => item.product)
   orderItems: OrderItem[];

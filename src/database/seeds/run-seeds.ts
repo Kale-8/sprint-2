@@ -7,6 +7,9 @@ import { Client } from '../../modules/clients/entities/client.entity';
 import { OrderItem } from '../../modules/orders/entities/order-item.entity';
 import { Product } from '../../modules/products/entities/product.entity';
 import { userSeed } from './user.seed';
+import { productSeed } from './product.seed';
+import { clientSeed } from './client.seed';
+import { orderSeed } from './order.seed';
 
 async function run() {
   // Crear una nueva conexión
@@ -38,8 +41,11 @@ async function run() {
     await dataSource.initialize();
     console.log('Data Source has been initialized!');
     
-    // Ejecutar los seeds
+    // Ejecutar seeds en orden
     await userSeed(dataSource);
+    await productSeed(dataSource);
+    await clientSeed(dataSource);
+    await orderSeed(dataSource);
     
     console.log('Seeds executed successfully!');
   } catch (err) {

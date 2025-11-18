@@ -18,10 +18,10 @@ export class OrderItem {
   subtotal: number;
 
   @ManyToOne(() => Order, (order) => order.orderItems)
-  @JoinColumn({ name: 'order_id' })
+  @JoinColumn({ name: 'orderId' })
   order: Order;
 
   @ManyToOne(() => Product, (product) => product.orderItems)
-  @JoinColumn({ name: 'product_id' })
+  @JoinColumn({ name: 'productId' })
   product: Product;
 }

@@ -7,8 +7,11 @@ export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string; // Identificador único
 
-  @Column({ length: 100 })
-  name: string;
+  @Column({ length: 50 })
+  firstName: string;
+
+  @Column({ length: 50 })
+  lastName: string;
 
   @Column({ unique: true })
   email: string;
@@ -22,9 +25,9 @@ export class User {
   // Relación N:M con Role
   @ManyToMany(() => Role, (role) => role.users, { eager: true })
   @JoinTable({
-    name: 'users_roles', // nombre de tabla intermedia
-    joinColumn: { name: 'user_id' },
-    inverseJoinColumn: { name: 'role_id' },
+    name: 'users_roles',
+    joinColumn: { name: 'userId' },
+    inverseJoinColumn: { name: 'roleId' },
   })
   roles: Role[];
 

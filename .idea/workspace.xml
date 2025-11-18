@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: creacion de entidades y modulos">
-      <change afterPath="$PROJECT_DIR$/src/database/seeds/run-seeds.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/seeds/user.seed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: creacion migracion y seed, instalacion de path y modificacion de nombres">
+      <change beforePath="$PROJECT_DIR$/src/database/seeds/run-seeds.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/seeds/run-seeds.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/seeds/user.seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/seeds/user.seed.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/orders/entities/order.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/entities/order.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/typeorm/typeorm.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/typeorm.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +101,7 @@
       <updated>1763049689886</updated>
       <workItem from="1763049693766" duration="13086000" />
       <workItem from="1763425757240" duration="441000" />
-      <workItem from="1763441608050" duration="5099000" />
+      <workItem from="1763441608050" duration="5789000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -161,7 +159,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763446479183</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: creacion migracion y seed, instalacion de path y modificacion de nombres">
+      <option name="closed" value="true" />
+      <created>1763448632266</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1763448632266</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +204,8 @@
     <MESSAGE value="fixed: Arreglo de typeorm.config.ts" />
     <MESSAGE value="fixed: creacion entidad y módulo de users" />
     <MESSAGE value="feat: creacion de entidades y modulos" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: creacion de entidades y modulos" />
+    <MESSAGE value="feat: creacion migracion y seed, instalacion de path y modificacion de nombres" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: creacion migracion y seed, instalacion de path y modificacion de nombres" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

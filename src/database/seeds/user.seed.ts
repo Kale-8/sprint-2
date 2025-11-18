@@ -24,15 +24,27 @@ export const userSeed = async (dataSource: DataSource) => {
   });
 
   if (!existingAdmin) {
+    // Primero guardamos el usuario sin roles
     const admin = userRepository.create({
-      name: 'Admin',
+      firstName: 'Admin',
+      lastName: 'User',
       email: 'admin@admin.com',
       password: '123456', // En producción, asegúrate de hashear la contraseña
-      isActive: true,
-      roles: [adminRole]
+      isActive: true
     });
 
-    await userRepository.save(admin);
+    const savedAdmin = await userRepository.save(admin);
+    
+    // Luego asignamos el rol usando una consulta directa
+    await dataSource.createQueryBuilder()
+      .insert()
+      .into('users_roles')
+      .values({
+        userId: savedAdmin.id,
+        roleId: adminRole.id
+      })
+      .execute();
+
     console.log('Admin user created successfully');
   } else {
     console.log('Admin user already exists');

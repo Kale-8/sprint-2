@@ -16,10 +16,17 @@ export class Order {
 
   @Column({
     type: 'enum',
-    enum: ['PENDING', 'PAID', 'SHIPPED', 'CANCELLED'],
+    enum: ['PENDING', 'PAID', 'SHIPPED', 'DELIVERED', 'CANCELLED'],
     default: 'PENDING',
   })
   status: string;
+
+  @Column({
+    type: 'enum',
+    enum: ['CASH', 'CREDIT_CARD', 'DEBIT_CARD', 'BANK_TRANSFER', 'OTHER'],
+    default: 'CASH'
+  })
+  paymentMethod: string;
 
   // Cliente que realiza el pedido
   @ManyToOne(() => Client, (client) => client.orders)
