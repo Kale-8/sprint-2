@@ -4,16 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="" />
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts">
+      <change beforePath="$PROJECT_DIR$/src/typeorm/typeorm.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/typeorm/typeorm.config.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="main-Luan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,16 +50,34 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main-Luan",
+    "git-widget-placeholder": "feature/HU001-crear-proyecto-config-module-Luan",
+    "last_opened_file_path": "/home/quiro66/WebstormProjects/sprint-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
+    "nodejs_interpreter_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/node",
+    "nodejs_package_manager_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/home/quiro66/WebstormProjects/sprint-2/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/config" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -65,11 +92,51 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1763049689886</updated>
-      <workItem from="1763049693766" duration="2703000" />
+      <workItem from="1763049693766" duration="10480000" />
     </task>
+    <task id="LOCAL-00001" summary="creacion de main">
+      <option name="closed" value="true" />
+      <created>1763052425799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763052425799</updated>
+    </task>
+    <task id="LOCAL-00002" summary="creacion de proyecto">
+      <option name="closed" value="true" />
+      <created>1763053427251</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763053427251</updated>
+    </task>
+    <task id="LOCAL-00003" summary="creacion de carpeta configuration.ts y config.module.ts">
+      <option name="closed" value="true" />
+      <created>1763093680031</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763093680031</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts">
+      <option name="closed" value="true" />
+      <created>1763127633938</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1763127633938</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creacion de main" />
+    <MESSAGE value="creacion de proyecto" />
+    <MESSAGE value="creacion de carpeta configuration.ts y config.module.ts" />
+    <MESSAGE value="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Configuracion de typeorm en carpeta con su typeorm.config.ts" />
   </component>
 </project>

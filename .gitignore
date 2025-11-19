@@ -1,0 +1,77 @@
+# NestJS / Node.js .gitignore
+
+# Dependencias
+node_modules/
+.pnpm-store/
+.pnp/
+.pnp.js
+
+# Compilados de TypeScript
+dist/
+build/
+*.tsbuildinfo
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Entornos
+.env
+.env.*.local
+.env.local
+.env.test
+.env.production
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Cobertura de tests
+coverage/
+.nyc_output/
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+
+# PM2 / procesos
+pids/
+*.pid
+*.seed
+
+# Docker
+docker-compose.override.yml
+*.pid.lock
+
+# Cachés
+.cache/
+.eslintcache
+.tscache/
+.next/
+.vercel/
+out/
+
+# Prisma (si lo usas)
+prisma/generated/
+
+# Otros posibles artefactos
+*.tgz
+*.orig
+*.bak
+*.rej
+
+# Seguridad
+secrets/
+keys/
