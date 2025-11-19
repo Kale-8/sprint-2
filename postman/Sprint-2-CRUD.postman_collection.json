@@ -3,6 +3,12 @@
     "name": "Sprint-2 CRUD API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      { "key": "token", "value": "{{accessToken}}", "type": "string" }
+    ]
+  },
   "item": [
     {
       "name": "Users",
@@ -222,9 +228,68 @@
         },
         { "name": "Delete Order", "request": { "method": "DELETE", "url": "{{baseUrl}}/orders/{{orderId}}" } }
       ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Login success', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var json = pm.response.json() || {}; var data = json.data || json;",
+                  "if (data.accessToken) pm.collectionVariables.set('accessToken', data.accessToken);",
+                  "if (data.refreshToken) pm.collectionVariables.set('refreshToken', data.refreshToken);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Refresh",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/auth/refresh",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Refresh success', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var json = pm.response.json() || {}; var data = json.data || json;",
+                  "if (data.accessToken) pm.collectionVariables.set('accessToken', data.accessToken);",
+                  "if (data.refreshToken) pm.collectionVariables.set('refreshToken', data.refreshToken);"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "variable": [
-    { "key": "baseUrl", "value": "http://localhost:3000" }
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "email", "value": "admin@admin.com" },
+    { "key": "password", "value": "123456" }
   ]
 }

@@ -13,6 +13,8 @@ export default () => ({
 
   jwt: {
     secret: process.env.JWT_SECRET || 'changeme',
-    expiresIn: (process.env.JWT_EXPIRE_IN || '1d'),
+    expiresIn: process.env.JWT_EXPIRATION || process.env.JWT_EXPIRE_IN || '900s',
+    refreshSecret: process.env.JWT_REFRESH_SECRET || process.env.JWT_SECRET || 'changeme_refresh',
+    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRATION || '7d',
   },
 });

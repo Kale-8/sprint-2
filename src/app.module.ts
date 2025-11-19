@@ -9,6 +9,7 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
     OrdersModule,
     RolesModule,
     UsersModule,
+    AuthModule,
   ],
 })
 export class AppModule implements NestModule {

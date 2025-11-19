@@ -4,10 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: archivo de exportacion postman">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: elaboracion de los archivos del common como son los middlewares, filters guards y interceptors">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ormconfig.migration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ormconfig.migration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postman/Sprint-2-CRUD.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/postman/Sprint-2-CRUD.postman_collection.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/configuration.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/configuration.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/typeorm.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/typeorm.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/HU003-Controladores-DTOs-Validación-Luan" />
+        <entry key="$PROJECT_DIR$" value="feature/HU004-Middleware-Filtros-Interceptores-Guards-Luan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/HU004-Middleware-Filtros-Interceptores-Guards-Luan",
+    "git-widget-placeholder": "feature/HU005-Auth-con-JWT+Refresh-Token-y-roles-desde-BD-Luan",
     "last_opened_file_path": "/home/quiro66/WebstormProjects/sprint-2",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -98,7 +104,7 @@
       <workItem from="1763049693766" duration="13086000" />
       <workItem from="1763425757240" duration="441000" />
       <workItem from="1763441608050" duration="6145000" />
-      <workItem from="1763483818387" duration="6941000" />
+      <workItem from="1763483818387" duration="7760000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -188,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763530080075</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat: elaboracion de los archivos del common como son los middlewares, filters guards y interceptors">
+      <option name="closed" value="true" />
+      <created>1763531339192</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763531339192</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +243,8 @@
     <MESSAGE value="feat: creacion de migracion y seeders de todas las entidades" />
     <MESSAGE value="fix: correccion de errores" />
     <MESSAGE value="feat: archivo de exportacion postman" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: archivo de exportacion postman" />
+    <MESSAGE value="feat: elaboracion de los archivos del common como son los middlewares, filters guards y interceptors" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: elaboracion de los archivos del common como son los middlewares, filters guards y interceptors" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

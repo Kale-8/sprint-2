@@ -6,8 +6,9 @@ import { Order } from '../modules/orders/entities/order.entity';
 import { Client } from '../modules/clients/entities/client.entity';
 import { OrderItem } from '../modules/orders/entities/order-item.entity';
 import { Product } from '../modules/products/entities/product.entity';
+import { RefreshToken } from '../modules/auth/entities/refresh-token.entity';
 
-const entities = [User, Role, Order, Client, OrderItem, Product];
+const entities = [User, Role, Order, Client, OrderItem, Product, RefreshToken];
 
 export default class TypeOrmConfig {
   static getOrmConfig(config: ConfigService): TypeOrmModuleOptions {
