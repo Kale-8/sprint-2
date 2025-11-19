@@ -1,0 +1,230 @@
+{
+  "info": {
+    "name": "Sprint-2 CRUD API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/users",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"{{$randomFirstName}}\",\n  \"lastName\": \"{{$randomLastName}}\",\n  \"email\": \"user+{{$timestamp}}@example.com\",\n  \"password\": \"123456\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var data = pm.response.json(); if (data && data.id) { pm.collectionVariables.set('userId', data.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get All Users",
+          "request": { "method": "GET", "url": "{{baseUrl}}/users" }
+        },
+        {
+          "name": "Get User by Id",
+          "request": { "method": "GET", "url": "{{baseUrl}}/users/{{userId}}" }
+        },
+        {
+          "name": "Update User (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/users/{{userId}}",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Updated\",\n  \"password\": \"654321\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/users/{{userId}}" }
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Create Role",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/roles",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"admin-{{$timestamp}}\",\n  \"description\": \"Administrator role\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var data = pm.response.json(); if (data && data.id) { pm.collectionVariables.set('roleId', data.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        { "name": "Get All Roles", "request": { "method": "GET", "url": "{{baseUrl}}/roles" } },
+        { "name": "Get Role by Id", "request": { "method": "GET", "url": "{{baseUrl}}/roles/{{roleId}}" } },
+        {
+          "name": "Update Role (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/roles/{{roleId}}",
+            "body": { "mode": "raw", "raw": "{\n  \"description\": \"Updated role desc\"\n}" }
+          }
+        },
+        { "name": "Delete Role", "request": { "method": "DELETE", "url": "{{baseUrl}}/roles/{{roleId}}" } }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/products",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Product {{$randomProductName}}\",\n  \"description\": \"Sample product\",\n  \"price\": 99.99,\n  \"stock\": 10,\n  \"sku\": \"SKU-{{$timestamp}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created or OK', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var data = pm.response.json(); if (data && data.id) { pm.collectionVariables.set('productId', data.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        { "name": "Get All Products", "request": { "method": "GET", "url": "{{baseUrl}}/products" } },
+        { "name": "Get Product by Id", "request": { "method": "GET", "url": "{{baseUrl}}/products/{{productId}}" } },
+        {
+          "name": "Update Product (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/products/{{productId}}",
+            "body": { "mode": "raw", "raw": "{\n  \"price\": 79.99,\n  \"stock\": 5\n}" }
+          }
+        },
+        { "name": "Delete Product", "request": { "method": "DELETE", "url": "{{baseUrl}}/products/{{productId}}" } }
+      ]
+    },
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "Create Client",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/clients",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{$randomFullName}}\",\n  \"document\": \"DOC-{{$timestamp}}\",\n  \"email\": \"client+{{$timestamp}}@example.com\",\n  \"phone\": \"3000000000\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created or OK', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var data = pm.response.json(); if (data && data.id) { pm.collectionVariables.set('clientId', data.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        { "name": "Get All Clients", "request": { "method": "GET", "url": "{{baseUrl}}/clients" } },
+        { "name": "Get Client by Id", "request": { "method": "GET", "url": "{{baseUrl}}/clients/{{clientId}}" } },
+        {
+          "name": "Update Client (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/clients/{{clientId}}",
+            "body": { "mode": "raw", "raw": "{\n  \"phone\": \"3111111111\"\n}" }
+          }
+        },
+        { "name": "Delete Client", "request": { "method": "DELETE", "url": "{{baseUrl}}/clients/{{clientId}}" } }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/orders",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client\": { \"id\": \"{{clientId}}\" },\n  \"user\": { \"id\": \"{{userId}}\" },\n  \"paymentMethod\": \"CASH\",\n  \"status\": \"PENDING\",\n  \"total\": 199.98,\n  \"orderItems\": [\n    { \"product\": { \"id\": \"{{productId}}\" }, \"quantity\": 2, \"price\": 99.99, \"subtotal\": 199.98 }\n  ]\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Created or OK', function () { pm.expect(pm.response.code).to.be.oneOf([200,201]); });",
+                  "var data = pm.response.json(); if (data && data.id) { pm.collectionVariables.set('orderId', data.id); }"
+                ]
+              }
+            }
+          ]
+        },
+        { "name": "Get All Orders", "request": { "method": "GET", "url": "{{baseUrl}}/orders" } },
+        { "name": "Get Order by Id", "request": { "method": "GET", "url": "{{baseUrl}}/orders/{{orderId}}" } },
+        {
+          "name": "Update Order (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": "{{baseUrl}}/orders/{{orderId}}",
+            "body": { "mode": "raw", "raw": "{\n  \"status\": \"PAID\"\n}" }
+          }
+        },
+        { "name": "Delete Order", "request": { "method": "DELETE", "url": "{{baseUrl}}/orders/{{orderId}}" } }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" }
+  ]
+}

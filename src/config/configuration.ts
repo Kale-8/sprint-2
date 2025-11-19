@@ -8,7 +8,7 @@ export default () => ({
     port: parseInt(process.env.DB_PORT ?? '5432', 10),
     user: process.env.DB_USER || 'postgres',
     pass: process.env.DB_PASS || 'postgres',
-    name: process.env.DB_NAME || 'sportline2',
+    name: process.env.DB_NAME || 'riwi_dev',
   },
 
   jwt: {
