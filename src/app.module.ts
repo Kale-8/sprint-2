@@ -1,5 +1,5 @@
 // src/app.module.ts
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppConfigModule } from './config/config.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfigAsync } from './database/typeorm.config';
@@ -8,6 +8,7 @@ import { ClientsModule } from './modules/clients/clients.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
 @Module({
   imports: [
@@ -20,4 +21,8 @@ import { UsersModule } from './modules/users/users.module';
     UsersModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
