@@ -1,26 +1,63 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  constructor(
+    @InjectRepository(User)
+    private repo: Repository<User>,
+  ) {}
+
+  async create(dto: CreateUserDto): Promise<User> {
+    const hashed = await bcrypt.hash(dto.password, 10);
+
+    const user = this.repo.create({
+      ...dto,
+      password: hashed,
+    });
+
+    return this.repo.save(user);
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll(): Promise<User[]> {
+    return this.repo.find({
+      relations: ['roles'], // Include roles in the result
+      where: { isActive: true }, // Only return active users by default
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string): Promise<User> {
+    const user = await this.repo.findOne({ 
+      where: { id },
+      relations: ['roles'], // Include roles in the result
+    });
+    
+    if (!user) {
+      throw new NotFoundException(`User with ID ${id} not found`);
+    }
+    
+    return user;
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, dto: UpdateUserDto): Promise<User> {
+    const user = await this.findOne(id);
+    
+    // If password is being updated, hash the new password
+    if (dto.password) {
+      dto.password = await bcrypt.hash(dto.password, 10);
+    }
+    
+    Object.assign(user, dto);
+    return this.repo.save(user);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string): Promise<void> {
+    // Soft delete by setting isActive to false
+    await this.repo.update(id, { isActive: false });
   }
 }

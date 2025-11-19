@@ -1,6 +1,7 @@
 import { DataSource } from 'typeorm';
 import { User } from '../../modules/users/entities/user.entity';
 import { Role } from '../../modules/roles/entities/role.entity';
+import * as bcrypt from 'bcrypt';
 
 export const userSeed = async (dataSource: DataSource) => {
   const userRepository = dataSource.getRepository(User);
@@ -25,11 +26,12 @@ export const userSeed = async (dataSource: DataSource) => {
 
   if (!existingAdmin) {
     // Primero guardamos el usuario sin roles
+    const hashed = await bcrypt.hash('123456', 10);
     const admin = userRepository.create({
       firstName: 'Admin',
       lastName: 'User',
       email: 'admin@admin.com',
-      password: '123456', // En producción, asegúrate de hashear la contraseña
+      password: hashed, // En producción, asegúrate de hashear la contraseña
       isActive: true
     });
 
