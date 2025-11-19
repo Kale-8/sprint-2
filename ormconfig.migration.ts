@@ -5,6 +5,7 @@ import { Order } from './src/modules/orders/entities/order.entity';
 import { Client } from './src/modules/clients/entities/client.entity';
 import { OrderItem } from './src/modules/orders/entities/order-item.entity';
 import { Product } from './src/modules/products/entities/product.entity';
+import { RefreshToken } from './src/modules/auth/entities/refresh-token.entity';
 
 export default new DataSource({
   type: 'postgres',
@@ -19,7 +20,8 @@ export default new DataSource({
     Order, 
     Client,
     OrderItem,
-    Product
+    Product,
+    RefreshToken
   ],
   migrations: ['src/database/migrations/*.ts'],
   synchronize: false,
