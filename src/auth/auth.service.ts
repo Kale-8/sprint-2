@@ -7,13 +7,8 @@ import { Repository } from 'typeorm';
 import { Usuario } from '../usuario/usuario.entity';
 import * as bcrypt from 'bcrypt';
 
-
-
-
-
 //Con este Injectable queremos primero accedemos a la tabla usuarios para buscar por email y luego comparar la contraseña hasheada. Despues de
 //autenticar al usuario, generamos los tokens JWT (access y refresh) con la informacion del usuario(payload).
-
 
 @Injectable()
 export class AuthService {
@@ -24,7 +19,13 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, password: string): Promise<Usuario> { //Funcion para validar usuario
-    const usuario = await this.usuarioRepo.findOne({ where: { email } });   //Buscamos el usuario por su email
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const usuario = await this.usuarioRepo.findOne({
+      where: { email: normalizedEmail },
+      relations: ['role'], // ✅ carga la relación para que usuario.role.name esté disponible
+    });
+
     if (!usuario) throw new UnauthorizedException('Usuario no encontrado'); //Si no lo encuentra con findOne, lanza error de no encontrado.
 
     const isMatch = await bcrypt.compare(password, usuario.password);        //Cuando encuentra el usuario, comparamos la contraseña hasheada con la proporcionada
@@ -37,7 +38,7 @@ export class AuthService {
     const payload = {       //Guardamos en el payload el id, email y role del usuario
       sub: usuario.id,
       email: usuario.email,
-      role: usuario.role,
+      role: usuario.role.name,
     };
 
     const accessToken = this.jwtService.sign(payload, { //this.jwtService.sign genera el token con el payload con su clave secreta y tiempo de expiracion.

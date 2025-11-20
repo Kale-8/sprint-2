@@ -13,15 +13,14 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-    @UseGuards(AuthGuard('jwt'), RolesGuard) // 👈 Protegido por JWT y roles
-    @Roles('admin') // 👈 Solo admins pueden crear usuarios
-    create(@Body() dto: CreateUsuarioDto, @Req() req: Request) {
-        return this.usuarioService.create(dto);
-    }
-  
+  @UseGuards(AuthGuard('jwt'), RolesGuard) //  Protegido por JWT y roles
+  @Roles('admin') // Solo admins pueden crear usuarios
+  create(@Body() dto: CreateUsuarioDto, @Req() req: Request) {
+      return this.usuarioService.create(dto);
+  }
 
   @Get()
-    findAll() {
-        return this.usuarioService.findAll();
-    }
+  findAll() {
+      return this.usuarioService.findAll();
+  }
 }

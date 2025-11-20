@@ -1,13 +1,15 @@
-import dataSource from '../../data-source';
+import { DataSource } from 'typeorm';
 import { Cliente } from '../cliente/cliente.entity/cliente.entity';
 import { Producto } from '../producto/producto.entity/producto.entity';
 import { Pedido } from '../pedido/pedido.entity/pedido.entity';
 import { Usuario } from '../usuario/usuario.entity';
-
+import { Role } from '../usuario/role/role.entity'
+import { seedRoles } from './role.seed';
 import bcrypt from 'bcrypt'; //Importamos el metodo bcrypt de su libreria para encriptar contraseñas.
 
-async function seed() {
-  await dataSource.initialize(); // Inicializamos la conexion a la base de datos.
+export async function seedTotales(dataSource: DataSource) {
+
+  await seedRoles(dataSource); // ✅ Asegura que los roles existan
 
 
   // 🌱 Insertar clientes
@@ -90,30 +92,36 @@ async function seed() {
 
   // 👤 Insertar usuarios
   const usuarioRepo = dataSource.getRepository(Usuario);
+  const roleRepo = dataSource.getRepository(Role);  
   const existeUsers = await usuarioRepo.find();//Aca verificamos si ya hay pedidos en la base de datos para no duplicar.
 
   if (existeUsers.length === 0) {
-    const usuarios = dataSource.getRepository(Usuario).create([
-      {
-        nombre: 'Admin',
-        email: 'stiven@gmail.com',
-        password: await bcrypt.hash('admin123', 10), //Encriptamos la contraseña antes de guardarla en la base de datos.
-        role: 'admin'
-      },
-      {
-        nombre: 'User',
-        email: 'user1@gmail.com',
-        password: await bcrypt.hash('user123', 10), //Encriptamos la contraseña antes de guardarla en la base de datos.
-        role: 'user'
-      },
-      {
-        nombre: 'User2',
-        email: 'user2@gmail.com',
-        password: await bcrypt.hash('user234', 10),
-        role: 'user'
-      }
-    ]);
-        await dataSource.getRepository(Usuario).save(usuarios);
+    const adminRole = await roleRepo.findOne({ where: { name: 'admin' } });
+    const userRole = await roleRepo.findOne({ where: { name: 'user' } });
+
+    if (!adminRole || !userRole) throw new Error('Roles no encontrados');
+
+const usuarios = [
+  usuarioRepo.create({
+    nombre: 'Admin',
+    email: 'stiven@gmail.com',
+    password: await bcrypt.hash('admin123', 10),
+    role: adminRole,
+  }),
+  usuarioRepo.create({
+    nombre: 'User',
+    email: 'user1@gmail.com',
+    password: await bcrypt.hash('user123', 10),
+    role: userRole,
+  }),
+  usuarioRepo.create({
+    nombre: 'User2',
+    email: 'user2@gmail.com',
+    password: await bcrypt.hash('user234', 10),
+    role: userRole,
+  }),
+];
+        await usuarioRepo.save(usuarios);
 
         console.log(`✅ Usuarios insertados`);
   }else{
@@ -121,7 +129,4 @@ async function seed() {
     }
 
   console.log('✅ Seed completo: clientes, productos, pedidos y usuarios insertados');
-  process.exit();
 }
-
-seed();
