@@ -5,6 +5,16 @@ import { GlobalExceptionFilter } from '../filter-ManejoErrores/http-exception.fi
 import { Roles } from 'src/guards/roles.decorator';
 import { RolesGuard } from 'src/guards/roles.guard';
 import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+
+
+
+@ApiTags('Clientes') // Agrupa los endpoints en Swagger
+@ApiBearerAuth('jwt-authSw') // Indica que se usa JWT
+@UseGuards(JwtAuthGuard, RolesGuard) // Protege el controlador con el guard osea despues de autenticar con JWT el token
+
+@UseFilters(GlobalExceptionFilter)
 
 @UseFilters(GlobalExceptionFilter) // ⛑️ Aplicar el filtro de excepciones a este controlador para los errores.
 @Controller('cliente')

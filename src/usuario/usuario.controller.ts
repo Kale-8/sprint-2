@@ -6,6 +6,14 @@ import { RolesGuard } from '../guards/roles.guard';
 import { Roles } from '../guards/roles.decorator';
 import type { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+
+
+
+@ApiTags('Usuarios') // Agrupa los endpoints en Swagger
+@ApiBearerAuth('jwt-authSw') // Indica que se usa JWT
+@UseGuards(JwtAuthGuard, RolesGuard) // Protege el controlador con el guard osea despues de autenticar con JWT el token
 
 @UseFilters(GlobalExceptionFilter)
 @Controller('usuario')
@@ -13,7 +21,6 @@ export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  @UseGuards(AuthGuard('jwt'), RolesGuard) //  Protegido por JWT y roles
   @Roles('admin') // Solo admins pueden crear usuarios
   create(@Body() dto: CreateUsuarioDto, @Req() req: Request) {
       return this.usuarioService.create(dto);
