@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Role } from './role/role.entity'
 
 @Entity()
 export class Usuario {
@@ -14,6 +15,7 @@ export class Usuario {
   @Column()
   password: string;
 
-  @Column({ default: 'cliente' }) //Rol por defecto
-  role: string;
+  @ManyToOne(() => Role, role => role.usuarios, { eager: true })
+  @JoinColumn({ name: 'roleId' }) // ✅ esto asegura que el campo se llame roleId
+  role: Role;
 }

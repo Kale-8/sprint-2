@@ -8,6 +8,7 @@ import { ProductoModule } from './producto/producto.module';
 import { ClienteModule } from './cliente/cliente.module';
 import { PedidoModule } from './pedido/pedido.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { AuthModule } from './auth/auth.module';
 
 
 // Aca estamos importando el ConfigModule para manejar variables de entorno y el TypeOrmModule
@@ -17,6 +18,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -31,6 +33,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
     ProductoModule,
     ClienteModule,
     PedidoModule,
+    AuthModule,
     // otros módulos
   ],
   controllers: [AppController],

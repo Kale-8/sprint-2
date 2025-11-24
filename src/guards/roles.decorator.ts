@@ -1,10 +1,10 @@
 import { SetMetadata } from '@nestjs/common'; //Metadata para roles de usuario osea notas invisibles.
 
+export const ROLES_KEY = 'roles';
 
 //Voy a guardar esta información bajo la etiqueta 'roles' de dichos roles en un array que seran admin y user de tipo string.
-export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
 
-
+export const Roles = (...roles: string[]) => SetMetadata(ROLES_KEY, roles);
 
 
 //Tú marcas una ruta con @Roles('admin').
