@@ -10,6 +10,7 @@ import { RolesModule } from './modules/roles/roles.module';
 import { UsersModule } from './modules/users/users.module';
 import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { AuthModule } from './modules/auth/auth.module';
+import { ApiKeyModule } from './modules/api-key/api-key.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AuthModule } from './modules/auth/auth.module';
     RolesModule,
     UsersModule,
     AuthModule,
+    ApiKeyModule,
   ],
 })
 export class AppModule implements NestModule {

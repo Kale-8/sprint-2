@@ -6,6 +6,7 @@ import { Client } from './src/modules/clients/entities/client.entity';
 import { OrderItem } from './src/modules/orders/entities/order-item.entity';
 import { Product } from './src/modules/products/entities/product.entity';
 import { RefreshToken } from './src/modules/auth/entities/refresh-token.entity';
+import { ApiKey } from './src/modules/api-key/entities/api-key.entity';
 
 export default new DataSource({
   type: 'postgres',
@@ -21,7 +22,8 @@ export default new DataSource({
     Client,
     OrderItem,
     Product,
-    RefreshToken
+    RefreshToken,
+    ApiKey,
   ],
   migrations: ['src/database/migrations/*.ts'],
   synchronize: false,
