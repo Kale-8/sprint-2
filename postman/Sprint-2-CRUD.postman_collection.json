@@ -1,15 +1,93 @@
 {
   "info": {
     "name": "Sprint-2 CRUD API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "API collection for Sprint-2 with JWT and Google OAuth2 authentication"
   },
   "auth": {
-    "type": "bearer",
-    "bearer": [
-      { "key": "token", "value": "{{accessToken}}", "type": "string" }
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "accessToken",
+        "value": "{{google_access_token}}",
+        "type": "string"
+      },
+      {
+        "key": "tokenType",
+        "value": "Bearer",
+        "type": "string"
+      },
+      {
+        "key": "addTokenTo",
+        "value": "header",
+        "type": "string"
+      }
     ]
   },
   "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Google OAuth2 Login",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/auth/google"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Redirected to Google', function () {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 302]);",
+                  "  if (pm.response.code === 302) {",
+                  "    pm.expect(pm.response.headers.get('Location')).to.include('accounts.google.com');",
+                  "  }",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login with JWT",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Login successful', function () {",
+                  "  pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+                  "  var jsonData = pm.response.json();",
+                  "  if (jsonData.access_token) {",
+                  "    pm.collectionVariables.set('accessToken', jsonData.access_token);",
+                  "    if (jsonData.refresh_token) {",
+                  "      pm.collectionVariables.set('refreshToken', jsonData.refresh_token);",
+                  "    }",
+                  "  }",
+                  "});"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Users",
       "item": [
@@ -290,6 +368,8 @@
   "variable": [
     { "key": "baseUrl", "value": "http://localhost:3000" },
     { "key": "email", "value": "admin@admin.com" },
-    { "key": "password", "value": "123456" }
+    { "key": "password", "value": "123456" },
+    { "key": "google_access_token", "value": "", "type": "string" },
+    { "key": "google_refresh_token", "value": "", "type": "string" }
   ]
 }
