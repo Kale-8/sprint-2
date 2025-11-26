@@ -10,10 +10,13 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 
 
-//Aca implemento el Swagger 
+//Aca implemento el Swagger con dos tipos de autenticacion: JWT y API Key
+//En la parte superior de Swagger aparecerán dos opciones de seguridad:
+//JWT → donde puedes poner tu token.
+//API Key → donde puedes poner tu x-api-key
 const config = new DocumentBuilder()
   .setTitle('API Riwi-Sportsline') // Título de tu API
-  .setDescription('Documentación Swagger con autenticación JWT') // Descripción
+  .setDescription('Documentación Swagger con autenticación JWT y api-Key') // Descripción
   .setVersion('1.0') // Versión
   .addBearerAuth(
     {
@@ -24,6 +27,14 @@ const config = new DocumentBuilder()
       in: 'header',
     },
     'jwt-authSw', // Este nombre lo usaremos en los decoradores
+  )
+  .addApiKey(
+    {
+      type: 'apiKey',
+      name: 'x-api-key', // nombre del header
+      in: 'header',
+    },
+    'api-key-authSw', // nombre del esquema para usar en decoradores
   )
 .build();
   
@@ -49,4 +60,8 @@ async function bootstrap() {
 }
 
 bootstrap();
+
+
+
+
 
