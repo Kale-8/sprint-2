@@ -59,12 +59,12 @@ export const orderSeed = async (dataSource: DataSource) => {
 
     // Crear la orden
     const order = orderRepository.create({
-      client: orderData.client,
+      client: orderData.client as any,
       status: orderData.status,
       paymentMethod: orderData.paymentMethod,
       total,
       orderDate: new Date()
-    });
+    } as any) as any;
 
     await orderRepository.save(order);
     console.log(`Orden creada para el cliente: ${orderData.client.name}`);
@@ -77,7 +77,7 @@ export const orderSeed = async (dataSource: DataSource) => {
         quantity: itemData.quantity,
         price: itemData.price,
         subtotal: itemData.price * itemData.quantity
-      });
+      } as any);
 
       await orderItemRepository.save(orderItem);
       console.log(`  - Item agregado: ${itemData.quantity}x ${itemData.product.name}`);
