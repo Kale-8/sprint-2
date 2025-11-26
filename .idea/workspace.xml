@@ -4,31 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: creacion de api-key-service y funciones para la api key">
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: implementacion de swagger en el para mejor documentacion del back">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nest-cli.json" beforeDir="false" afterPath="$PROJECT_DIR$/nest-cli.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/seeds/order.seed.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/seeds/order.seed.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/clients/dto/create-client.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/clients/dto/create-client.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/clients/dto/update-client.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/clients/dto/update-client.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/dto/create-order.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/dto/create-order.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/dto/update-order.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/dto/update-order.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/entities/order.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/entities/order.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/dto/create-product.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/dto/create-product.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/dto/update-product.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/dto/update-product.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/products.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/products.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/products.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/roles/dto/create-role.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/roles/dto/create-role.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/roles/dto/update-role.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/roles/dto/update-role.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/users/dto/create-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/dto/create-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/users/dto/update-user.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/dto/update-user.dto.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/users/users.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/api-key/api-key.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/api-key/api-key.controller.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/api-key/api-key.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/api-key/api-key.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/clients/entities/client.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/clients/entities/client.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.controller.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/products/products.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.controller.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/products/products.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/roles/entities/role.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/roles/entities/role.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/users/users.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.service.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/HU005-Auth-con-JWT+Refresh-Token-y-roles-desde-BD-Luan" />
+        <entry key="$PROJECT_DIR$" value="feature/HU006-X-api-key-y-OAuth2-(Google)-Luan" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,30 +59,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Node.js.typeorm.config.ts.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/HU006-X-api-key-y-OAuth2-(Google)-Luan&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/quiro66/WebstormProjects/sprint-2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;/home/quiro66/.nvm/versions/node/v24.11.0/bin/node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;/home/quiro66/.nvm/versions/node/v24.11.0/bin/npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/quiro66/WebstormProjects/sprint-2/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.docs.executor": "Debug",
+    "Node.js.typeorm.config.ts.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/HU007-Swagger-tests-(unit-+-e2e)-linters-Luan",
+    "last_opened_file_path": "/home/quiro66/WebstormProjects/sprint-2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/node",
+    "nodejs_package_manager_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "/home/quiro66/WebstormProjects/sprint-2/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -101,6 +91,16 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/config" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="docs" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3000/api/docs">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.docs" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -124,7 +124,7 @@
       <workItem from="1763929681215" duration="2097000" />
       <workItem from="1764041763910" duration="1566000" />
       <workItem from="1764096755656" duration="768000" />
-      <workItem from="1764130188204" duration="3943000" />
+      <workItem from="1764130188204" duration="6135000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -246,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764174123171</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: implementacion de swagger en el para mejor documentacion del back">
+      <option name="closed" value="true" />
+      <created>1764174633304</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1764174633304</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +299,8 @@
     <MESSAGE value="feat: instalacion de jwt y creacion de archivos" />
     <MESSAGE value="feat: creacion modulo de api-x-keys y configuracion de Oauth Google" />
     <MESSAGE value="feat: creacion de api-key-service y funciones para la api key" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: creacion de api-key-service y funciones para la api key" />
+    <MESSAGE value="feat: implementacion de swagger en el para mejor documentacion del back" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: implementacion de swagger en el para mejor documentacion del back" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

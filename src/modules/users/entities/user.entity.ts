@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToMany, OneToMany, JoinTable } from 'typeorm';
-import { Role } from 'src/modules/roles/entities/role.entity';
-import { Order } from 'src/modules/orders/entities/order.entity';
+import { Role } from '../../roles/entities/role.entity';
+import { Order } from '../../orders/entities/order.entity';
 
 @Entity({ name: 'users' })
 export class User {
