@@ -6,20 +6,18 @@ import { JwtModule } from '@nestjs/jwt'; //Modulo para manejar los tokens JWT
 import { JwtStrategy } from './jwt.strategy'; //Estrategia para validar los tokens JWT
 import { TypeOrmModule } from '@nestjs/typeorm'; //Modulo para manejar la conexion a la base de datos
 import { Usuario } from '../usuario/usuario.entity'; //Entidad Usuario para acceder a la tabla usuarios en la base de datos
-
+import { GoogleStrategy } from './google.strategy'; //Estrategia para autenticacion con Google OAuth2
 
 @Module({
-  imports: [
+  imports: [PassportModule.register({ defaultStrategy: 'google' }),
     PassportModule,
     JwtModule.register({}), // puedes omitir config aquí si usas ConfigService
     TypeOrmModule.forFeature([Usuario]),
   ],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, GoogleStrategy],
   controllers: [AuthController],
 })
 export class AuthModule {}
-
-
 
 //FLUJO PARA AUTENTICACION CON JWT:
 //1. El usuario envia sus credenciales (email y password) al endpoint /auth/login del AuthController.
