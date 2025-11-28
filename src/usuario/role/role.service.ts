@@ -11,12 +11,14 @@ export class RoleService {
     private readonly roleRepo: Repository<Role>,
   ) {}
 
-  async create(name: string): Promise<Role> {  //Crear el role y lo guarda en la base de datos.
+  async create(name: string): Promise<Role> {
+    //Crear el role y lo guarda en la base de datos.
     const role = this.roleRepo.create({ name });
     return this.roleRepo.save(role);
   }
 
-  async findAll(): Promise<Role[]> {  //Muestra el listado de los roles.
+  async findAll(): Promise<Role[]> {
+    //Muestra el listado de los roles.
     return this.roleRepo.find();
   }
 }

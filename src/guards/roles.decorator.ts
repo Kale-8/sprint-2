@@ -6,7 +6,6 @@ export const ROLES_KEY = 'roles';
 
 export const Roles = (...roles: string[]) => SetMetadata(ROLES_KEY, roles);
 
-
 //Tú marcas una ruta con @Roles('admin').
 //NestJS guarda ese dato como metadato.
 //Cuando alguien accede a esa ruta:

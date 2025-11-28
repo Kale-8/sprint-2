@@ -23,7 +23,10 @@ describe('UsuarioService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UsuarioService,
-        { provide: getRepositoryToken(Usuario), useValue: mockUsuarioRepository },
+        {
+          provide: getRepositoryToken(Usuario),
+          useValue: mockUsuarioRepository,
+        },
         { provide: getRepositoryToken(Role), useValue: mockRoleRepository },
       ],
     }).compile();
@@ -35,8 +38,6 @@ describe('UsuarioService', () => {
     expect(service).toBeDefined();
   });
 });
-
-
 
 // import { Test, TestingModule } from '@nestjs/testing';
 // import { UsuarioService } from './usuario.service';
@@ -69,7 +70,7 @@ describe('UsuarioService', () => {
 
 //     expect(result.length).toBeGreaterThan(0);
 //     expect(mockRepo.find).toHaveBeenCalled();
-//   });  
+//   });
 
 //   beforeEach(async () => {
 //     const module: TestingModule = await Test.createTestingModule({
@@ -83,6 +84,3 @@ describe('UsuarioService', () => {
 //     expect(service).toBeDefined();
 //   });
 // });
-  
-
-

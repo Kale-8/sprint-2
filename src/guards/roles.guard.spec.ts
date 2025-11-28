@@ -13,7 +13,6 @@ export interface HttpArgumentsHost {
 class DummyController {}
 
 describe('RolesGuard', () => {
-  
   let guard: RolesGuard;
   let reflector: Reflector;
 
@@ -25,12 +24,12 @@ describe('RolesGuard', () => {
   it('debería permitir acceso si el rol coincide', () => {
     const mockContext: Partial<ExecutionContext> = {
       getHandler: () => jest.fn(),
-      getClass: () => DummyController as Type<any>, 
+      getClass: () => DummyController as Type<any>,
       switchToHttp: () => ({
         getRequest: () => ({ user: { role: 'admin' } }) as any,
-        getResponse: () => ({} as any),                             
-        getNext: () => jest.fn() as any,                             
-      }), 
+        getResponse: () => ({}) as any,
+        getNext: () => jest.fn() as any,
+      }),
     };
 
     jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(['admin']);
@@ -41,56 +40,52 @@ describe('RolesGuard', () => {
   it('debería bloquear acceso si el rol no coincide', () => {
     const mockContext: Partial<ExecutionContext> = {
       getHandler: () => jest.fn(),
-      getClass: () => DummyController as Type<any>, 
+      getClass: () => DummyController as Type<any>,
       switchToHttp: () => ({
         getRequest: () => ({ user: { role: 'user' } }) as any,
-        getResponse: () => ({} as any),                             
-        getNext: () => jest.fn() as any,                             
+        getResponse: () => ({}) as any,
+        getNext: () => jest.fn() as any,
       }),
     };
 
     jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(['admin']);
-    
-    expect(() => guard.canActivate(mockContext as ExecutionContext))
-    .toThrow(ForbiddenException);
+
+    expect(() => guard.canActivate(mockContext as ExecutionContext)).toThrow(
+      ForbiddenException,
+    );
   });
 
   it('debería permitir acceso si no hay roles definidos', () => {
-  const mockContext: Partial<ExecutionContext> = {
-    getHandler: () => jest.fn(),
-    getClass: () => DummyController as Type<any>,
-    switchToHttp: () => ({
-      getRequest: () => ({ user: { role: 'admin' } }) as any,
-      getResponse: () => ({} as any),
-      getNext: () => jest.fn() as any,
-    }),
-  };
+    const mockContext: Partial<ExecutionContext> = {
+      getHandler: () => jest.fn(),
+      getClass: () => DummyController as Type<any>,
+      switchToHttp: () => ({
+        getRequest: () => ({ user: { role: 'admin' } }) as any,
+        getResponse: () => ({}) as any,
+        getNext: () => jest.fn() as any,
+      }),
+    };
 
-  jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(undefined);
+    jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(undefined);
 
-  expect(guard.canActivate(mockContext as ExecutionContext)).toBe(true);
+    expect(guard.canActivate(mockContext as ExecutionContext)).toBe(true);
   });
 
   it('debería lanzar ForbiddenException si no hay usuario', () => {
-  const mockContext: Partial<ExecutionContext> = {
-    getHandler: () => jest.fn(),
-    getClass: () => DummyController as Type<any>,
-    switchToHttp: () => ({
-      getRequest: () => ({ user: { role: 'user' } }) as any,
-      getResponse: () => ({} as any),
-      getNext: () => jest.fn() as any,
-    }),
-  };
+    const mockContext: Partial<ExecutionContext> = {
+      getHandler: () => jest.fn(),
+      getClass: () => DummyController as Type<any>,
+      switchToHttp: () => ({
+        getRequest: () => ({ user: { role: 'user' } }) as any,
+        getResponse: () => ({}) as any,
+        getNext: () => jest.fn() as any,
+      }),
+    };
 
-  jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(['admin']);
+    jest.spyOn(reflector, 'getAllAndOverride').mockReturnValue(['admin']);
 
-  expect(() => guard.canActivate(mockContext as ExecutionContext))
-    .toThrow(ForbiddenException);
+    expect(() => guard.canActivate(mockContext as ExecutionContext)).toThrow(
+      ForbiddenException,
+    );
   });
-
 });
-
-
-
-
-

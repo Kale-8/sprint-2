@@ -16,9 +16,7 @@ describe('UsuarioController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsuarioController],
-      providers: [
-        { provide: UsuarioService, useValue: mockUsuarioService },
-      ],
+      providers: [{ provide: UsuarioService, useValue: mockUsuarioService }],
     }).compile();
 
     controller = module.get<UsuarioController>(UsuarioController);
@@ -28,4 +26,3 @@ describe('UsuarioController', () => {
     expect(controller).toBeDefined();
   });
 });
-

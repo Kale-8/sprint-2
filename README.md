@@ -1,79 +1,55 @@
-# Políticas de Git Branching y Git Flow
+# 📌 Proyecto Riwi Sportsline – Backend con NestJS
 
-Estas políticas definen la forma de trabajo colaborativo en los repositorios de cada célula de desarrollo (cell). El objetivo es mantener un flujo de trabajo ordenado, claro y fácilmente integrable entre los miembros del equipo.
-
----
-
-## Estructura General
-
-- **Repositorio por célula:**  
-  Cada célula de desarrollo debe tener su propio repositorio independiente.
-
-- **Rama principal por miembro del cell:**  
-  Cada miembro del equipo mantiene su propia rama principal derivada de `main`.  
-  **Ejemplo:** `main-sam`, `main-lina`, `main-juan`.
+Este proyecto implementa un backend escalable y mantenible con **NestJS**, siguiendo estándares profesionales de calidad, seguridad y documentación.  
+Se han configurado herramientas de análisis estático, pruebas unitarias, control de commits y cobertura de código para garantizar la confiabilidad del sistema.
 
 ---
 
-## Flujo de Desarrollo
+## 🚀 Objetivos de Migración
 
-1. **Una rama por Historia de Usuario (HU):**  
-   Cada HU debe desarrollarse en una rama específica y única.  
-   **Ejemplo:** `feature/HU-001-crear-login`
+1. **Configurar análisis de código estático con SonarQube**  
+   - Integración con `sonar-scanner`.  
+   - Reglas de calidad: cobertura mínima >80%, duplicación, complejidad.  
+   - Reportes automáticos en CI/CD.
 
-2. **Un Pull Request (PR) por HU:**  
-   Cada HU debe integrarse mediante un PR independiente hacia la rama principal del miembro (`main-[nombre]`).
+2. **Realizar pruebas unitarias e integración**  
+   - Cobertura mínima exigida por SonarQube.  
+   - Casos de éxito y error en servicios, guards e interceptores.  
+   - Uso de `getRepositoryToken` para mockear repositorios.  
+   - Validación de DTOs y entidades.
 
-3. **Un commit por cada *feat* (funcionalidad):**  
-   Los commits deben representar unidades completas de valor funcional, siguiendo el formato:
+3. **Implementar Husky y pre-commit hooks para control de calidad**  
+   - Hook `pre-commit` ejecuta:
+     - `npm run lint` (ESLint/Prettier).  
+     - `npm run test` (unit tests).  
+     - `npm run sonar` (opcional).  
+   - Bloqueo de commits si falla linting o tests.  
+   - Opcional: `commitlint` para estandarizar mensajes de commit.
 
+---
+
+## 🛠️ Instalación y Configuración
+
+1. Clonar el repositorio:
    ```bash
-   feat: descripción breve de la funcionalidad
-   ```
+   git clone <url-del-repo>
+   cd riwi-sportsline
+
 
 ---
 
-## Integración y Fusión
+Calidad y Cobertura
+SonarQube: cobertura mínima >80%.
 
-- **Fusión en rama principal del miembro:**  
-  Cada miembro debe mantener actualizada su rama principal (main-[nombre]) fusionando todos los PRs de sus HU aprobadas.
+ESLint/Prettier: reglas estrictas de tipado y estilo.
 
-- **Sincronización entre miembros del cell:**  
-  Periódicamente, las ramas principales de los miembros se integrarán entre sí o hacia un main global del proyecto, según el flujo definido por el líder técnico o DevOps.
+Husky: bloquea commits si falla linting o tests.
+
+Commitlint: mensajes de commit estandarizados.
 
 ---
 
-## Ejemplo de Flujo Simplificado
-
-```bash
-# Crear rama desde la principal del miembro
-git checkout -b feature/HU-001-crear-login main-sam
-
-# Implementar la funcionalidad
-# ...
-
-# Commit del feature
-git commit -m "feat: implementar formulario de login con validaciones"
-
-# Subir rama
-git push origin feature/HU-001-crear-login
-
-# Crear PR hacia main-sam
-# Revisar, aprobar y fusionar
-```
+AUTOR Steven Hidalgo Sánchez CLAN: Linus 
+NestJs
 
 
-# RIWI Sportsline - Migración a NestJS
-
-## Setup inicial
-
-1. Proyecto creado con Nest CLI.
-2. Configuración de entorno con `.env` y `ConfigModule`.
-3. Integración de TypeORM con PostgreSQL.
-4. Entidad base `Usuario` creada.
-5. ESLint y Prettier configurados para mantener buenas prácticas.
-
-## Comandos útiles
-
-```bash
-npm run start:dev

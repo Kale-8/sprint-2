@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Get, NotFoundException, UseFilters, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  NotFoundException,
+  UseFilters,
+  UseGuards,
+} from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import { CreateClienteDto } from './create-cliente.dto';
 import { GlobalExceptionFilter } from '../filter-ManejoErrores/http-exception.filter';
@@ -9,7 +17,6 @@ import { Scopes } from '../auth/scopes.decorator';
 
 @ApiTags('Clientes') // Agrupa los endpoints en Swagger
 @UseFilters(GlobalExceptionFilter)
-
 @UseFilters(GlobalExceptionFilter) //  Aplicar el filtro de excepciones a este controlador para los errores.
 @Controller('cliente')
 export class ClienteController {
@@ -21,7 +28,7 @@ export class ClienteController {
     return this.clienteService.create(dto);
   }
 
-  @Get() //Metodo para ver todos los clientes 
+  @Get() //Metodo para ver todos los clientes
   @ApiKeyAuth() // protege con x-api-key
   @UseGuards(ApiKeyScopesGuard)
   @Scopes('read:clientes') // 🔒 este endpoint requiere permiso de lectura

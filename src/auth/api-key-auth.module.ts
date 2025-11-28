@@ -9,8 +9,6 @@ import { ApiKeyGuard } from './api-key.guard';
 })
 export class ApiKeyAuthModule {}
 
-
-
 //FLUJO
 //El cliente hace POST /cliente con header: x-api-key: supersecreta123
 //El ApiKeyGuard valida la clave.

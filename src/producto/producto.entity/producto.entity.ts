@@ -15,7 +15,6 @@ export class Producto {
   @Column()
   stock: number;
 
-  @OneToMany(() => Pedido, pedido => pedido.producto)
+  @OneToMany(() => Pedido, (pedido) => pedido.producto)
   pedidos: Pedido[];
 }
-

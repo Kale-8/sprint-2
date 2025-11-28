@@ -12,6 +12,6 @@ export class Cliente {
   @Column()
   direccion: string;
 
-  @OneToMany(() => Pedido, pedido => pedido.cliente)
+  @OneToMany(() => Pedido, (pedido) => pedido.cliente)
   pedidos: Pedido[];
 }

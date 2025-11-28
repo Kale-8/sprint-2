@@ -17,7 +17,10 @@ describe('ProductoService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         ProductoService,
-        { provide: getRepositoryToken(Producto), useValue: mockProductoRepository },
+        {
+          provide: getRepositoryToken(Producto),
+          useValue: mockProductoRepository,
+        },
       ],
     }).compile();
 
@@ -28,7 +31,6 @@ describe('ProductoService', () => {
     expect(service).toBeDefined();
   });
 });
-
 
 // describe('ProductoService', () => {
 //   let service: ProductoService;
@@ -41,7 +43,7 @@ describe('ProductoService', () => {
 //       save: jest.fn().mockImplementation((producto) => Promise.resolve({ id: 1, ...producto })),
 //       find: jest.fn().mockResolvedValue([{ id: 1, nombre: 'Balón' }]),
 //     };
-    
+
 //     // 🧪 Inyectamos el mock en el servicio
 //     service = new ProductoService(mockRepo);
 //   });
@@ -72,6 +74,5 @@ describe('ProductoService', () => {
 //   it('should be defined', () => {
 //     expect(service).toBeDefined();
 //   });
-  
-// });
 
+// });

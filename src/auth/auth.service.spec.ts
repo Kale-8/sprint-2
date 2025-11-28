@@ -22,7 +22,10 @@ describe('AuthService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
-        { provide: getRepositoryToken(Usuario), useValue: mockUsuarioRepository },
+        {
+          provide: getRepositoryToken(Usuario),
+          useValue: mockUsuarioRepository,
+        },
         { provide: JwtService, useValue: mockJwtService },
       ],
     }).compile();
@@ -34,4 +37,3 @@ describe('AuthService', () => {
     expect(service).toBeDefined();
   });
 });
-
