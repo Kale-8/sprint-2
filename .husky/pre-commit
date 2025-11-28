@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo " Ejecutando lint."
+npm run lint
+echo " Ejecutando test."
+npm run test
+echo " Ejecutando sonarQube."
+npm run sonar

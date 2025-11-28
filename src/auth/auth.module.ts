@@ -9,7 +9,8 @@ import { Usuario } from '../usuario/usuario.entity'; //Entidad Usuario para acce
 import { GoogleStrategy } from './google.strategy'; //Estrategia para autenticacion con Google OAuth2
 
 @Module({
-  imports: [PassportModule.register({ defaultStrategy: 'google' }),
+  imports: [
+    PassportModule.register({ defaultStrategy: 'google' }),
     PassportModule,
     JwtModule.register({}), // puedes omitir config aquí si usas ConfigService
     TypeOrmModule.forFeature([Usuario]),
@@ -22,7 +23,7 @@ export class AuthModule {}
 //FLUJO PARA AUTENTICACION CON JWT:
 //1. El usuario envia sus credenciales (email y password) al endpoint /auth/login del AuthController.
 //2. El AuthController recibe los datos y llama al AuthService para validar las credenciales del usuario si son correctos.
-//3. El AuthService busca el usuario en la base de datos por medio del email y compara la contraseña hasheada. 
+//3. El AuthService busca el usuario en la base de datos por medio del email y compara la contraseña hasheada.
 // Si todo es correcto genera los tokens JWT (access y refresh) con la informacion del usuario (payload) y los retorna al AuthController.
 //4. El AuthController recibe los tokens y los envia de vuelta al cliente (frontend) con el id, email y role del usuario.
 //Esta info está codificada dentro del token, como si fuera un pase digital.

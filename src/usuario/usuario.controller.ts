@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Get, UseFilters, UseGuards, Req } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  UseFilters,
+  UseGuards,
+  Req,
+} from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { CreateUsuarioDto } from './create-usuario.dto';
 import { GlobalExceptionFilter } from '../filter-ManejoErrores/http-exception.filter';
@@ -9,12 +17,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
-
-
 @ApiTags('Usuarios') // Agrupa los endpoints en Swagger
 @ApiBearerAuth('jwt-authSw') // Indica que se usa JWT
 @UseGuards(JwtAuthGuard, RolesGuard) // Protege el controlador con el guard osea despues de autenticar con JWT el token
-
 @UseFilters(GlobalExceptionFilter)
 @Controller('usuario')
 export class UsuarioController {
@@ -23,11 +28,11 @@ export class UsuarioController {
   @Post()
   @Roles('admin') // Solo admins pueden crear usuarios
   create(@Body() dto: CreateUsuarioDto, @Req() req: Request) {
-      return this.usuarioService.create(dto);
+    return this.usuarioService.create(dto);
   }
 
   @Get()
   findAll() {
-      return this.usuarioService.findAll();
+    return this.usuarioService.findAll();
   }
 }

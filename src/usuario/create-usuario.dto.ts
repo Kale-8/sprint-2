@@ -14,6 +14,6 @@ export class CreateUsuarioDto {
   @MinLength(6)
   password: string;
 
-   @IsString()
-   role?: string;
+  @IsString()
+  role?: string;
 }

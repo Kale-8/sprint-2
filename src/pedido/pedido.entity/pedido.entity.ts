@@ -7,10 +7,10 @@ export class Pedido {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Cliente, cliente => cliente.pedidos)
+  @ManyToOne(() => Cliente, (cliente) => cliente.pedidos)
   cliente: Cliente;
 
-  @ManyToOne(() => Producto, producto => producto.pedidos)
+  @ManyToOne(() => Producto, (producto) => producto.pedidos)
   producto: Producto;
 
   @Column('int')

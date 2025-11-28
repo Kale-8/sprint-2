@@ -4,7 +4,6 @@ import { LoggingInterceptor } from './logging.interceptor';
 import { ExecutionContext, CallHandler } from '@nestjs/common';
 import { of, lastValueFrom } from 'rxjs'; //Esto crea un observable simple para simular la respuesta del controlador.
 
-
 describe('LoggingInterceptor', () => {
   it('debería registrar el tiempo de ejecución', async () => {
     const interceptor = new LoggingInterceptor();
@@ -22,6 +21,8 @@ describe('LoggingInterceptor', () => {
 
     await lastValueFrom(interceptor.intercept(context, handler));
 
-    expect(spy).toHaveBeenCalledWith(expect.stringMatching(/\[GET\] \/cliente - \d+ms/));
+    expect(spy).toHaveBeenCalledWith(
+      expect.stringMatching(/\[GET\] \/cliente - \d+ms/),
+    );
   });
 });

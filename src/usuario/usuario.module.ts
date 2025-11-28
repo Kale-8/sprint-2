@@ -5,10 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Usuario } from './usuario.entity';
 import { RoleModule } from './role/role.module';
 
-
 @Module({
-  imports: [TypeOrmModule.forFeature([Usuario]), //RFegistro de la entidad Usuario en TypeORM para la inyeccion.
-  RoleModule,
+  imports: [
+    TypeOrmModule.forFeature([Usuario]), //RFegistro de la entidad Usuario en TypeORM para la inyeccion.
+    RoleModule,
   ],
   providers: [UsuarioService],
   controllers: [UsuarioController],

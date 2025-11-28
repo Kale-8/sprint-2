@@ -1,8 +1,8 @@
 import { Controller, Post, Body, Get, Req, UseGuards } from '@nestjs/common';
-import { AuthService } from './auth.service';  //Importamos para obtener el token despues de validar el usuario
-import { LoginDto } from './login.dto';  //DTO para recibir email y password en el login desde el frontend
-import { AuthGuard } from '@nestjs/passport';   //Importamos el AuthGuard de passport para usar Google OAuth2
-import { ApiTags } from '@nestjs/swagger';   //Importamos ApiTags para documentacion Swagger(agrupar los endpoints)
+import { AuthService } from './auth.service'; //Importamos para obtener el token despues de validar el usuario
+import { LoginDto } from './login.dto'; //DTO para recibir email y password en el login desde el frontend
+import { AuthGuard } from '@nestjs/passport'; //Importamos el AuthGuard de passport para usar Google OAuth2
+import { ApiTags } from '@nestjs/swagger'; //Importamos ApiTags para documentacion Swagger(agrupar los endpoints)
 
 @Controller('auth')
 export class AuthController {
@@ -11,7 +11,10 @@ export class AuthController {
   //En este post /login recibimos el email y password desde el frontend para validar el usuario y generar los tokens JWT y retornarlos.
   @Post('login')
   async login(@Body() dto: LoginDto) {
-    const usuario = await this.authService.validateUser(dto.email, dto.password);
+    const usuario = await this.authService.validateUser(
+      dto.email,
+      dto.password,
+    );
     return this.authService.generateTokens(usuario);
   }
   //Rutas para autenticacion con Google OAuth2
@@ -29,6 +32,6 @@ export class AuthController {
     return {
       message: 'Autenticación con Google exitosa',
       user: req.user,
-   };
+    };
   }
 }
