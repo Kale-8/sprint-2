@@ -33,9 +33,6 @@ export class RolesGuard implements CanActivate {
     const userRole = typeof user.role === 'string' ? user.role.toLowerCase() : user.role?.name.toLowerCase();
     const required = requiredRoles.map(r => r.toLowerCase());
 
-    if (!requiredRoles.includes(userRole)) {
-      throw new ForbiddenException('Acceso denegado.');
-    }
 
     if (!required.includes(userRole)) {
       throw new ForbiddenException('Acceso denegado.');
