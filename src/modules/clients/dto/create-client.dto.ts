@@ -7,6 +7,7 @@ export class CreateClientDto {
         example: 'Juan Pérez',
         required: true
     })
+    //hola
     @IsString()
     @IsNotEmpty()
     name: string;

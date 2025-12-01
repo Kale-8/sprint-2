@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat: implementacion de swagger en el para mejor documentacion del back">
+    <list default="true" id="796c8573-3430-4ed2-903b-cc739b52261e" name="Changes" comment="feat">
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/api-key/api-key.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/api-key/api-key.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/api-key/api-key.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/api-key/api-key.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/clients/entities/client.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/clients/entities/client.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/entities/order-item.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/orders/orders.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/orders/orders.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/entities/product.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/products.controller.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.controller.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/products/products.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/products/products.service.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/roles/entities/role.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/roles/entities/role.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/entities/user.entity.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/users/users.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/users/users.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/clients/dto/create-client.dto.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/clients/dto/create-client.dto.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,31 +49,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JavaScript Debug.docs.executor": "Debug",
-    "Node.js.typeorm.config.ts.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/HU007-Swagger-tests-(unit-+-e2e)-linters-Luan",
-    "last_opened_file_path": "/home/quiro66/WebstormProjects/sprint-2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/node",
-    "nodejs_package_manager_path": "/home/quiro66/.nvm/versions/node/v24.11.0/bin/npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "/home/quiro66/WebstormProjects/sprint-2/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JavaScript Debug.docs.executor&quot;: &quot;Debug&quot;,
+    &quot;Node.js.typeorm.config.ts.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/HU007-Swagger-tests-(unit-+-e2e)-linters-Luan&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/quiro66/WebstormProjects/MediWave-Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/quiro66/.nvm/versions/node/v24.11.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;/home/quiro66/.nvm/versions/node/v24.11.0/bin/npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/quiro66/WebstormProjects/sprint-2/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -124,7 +114,14 @@
       <workItem from="1763929681215" duration="2097000" />
       <workItem from="1764041763910" duration="1566000" />
       <workItem from="1764096755656" duration="768000" />
-      <workItem from="1764130188204" duration="6135000" />
+      <workItem from="1764130188204" duration="6278000" />
+      <workItem from="1764203709318" duration="134000" />
+      <workItem from="1764257422733" duration="65000" />
+      <workItem from="1764257791099" duration="200000" />
+      <workItem from="1764268173960" duration="72000" />
+      <workItem from="1764268264746" duration="8000" />
+      <workItem from="1764268381982" duration="35000" />
+      <workItem from="1764341710874" duration="7206000" />
     </task>
     <task id="LOCAL-00001" summary="creacion de main">
       <option name="closed" value="true" />
@@ -254,7 +251,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764174633304</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="fix:arreglo de errores">
+      <option name="closed" value="true" />
+      <created>1764180881809</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1764180881809</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +305,8 @@
     <MESSAGE value="feat: creacion modulo de api-x-keys y configuracion de Oauth Google" />
     <MESSAGE value="feat: creacion de api-key-service y funciones para la api key" />
     <MESSAGE value="feat: implementacion de swagger en el para mejor documentacion del back" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: implementacion de swagger en el para mejor documentacion del back" />
+    <MESSAGE value="fix:arreglo de errores" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:arreglo de errores" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>
