@@ -2,6 +2,7 @@ import { Column, CreateDateColumn, Entity, Index, JoinTable, ManyToMany, Primary
 import { Role } from '../auth/entities/role.entity';
 
 export type UserRole = 'admin' | 'vendedor';
+export type AuthProvider = 'local' | 'google';
 
 @Entity({ name: 'usuarios' })
 export class User {
@@ -15,8 +16,8 @@ export class User {
   @Column({ type: 'varchar', length: 150 })
   email!: string;
 
-  @Column({ name: 'passwordHash', type: 'varchar', length: 255 })
-  passwordHash!: string;
+  @Column({ name: 'passwordHash', type: 'varchar', length: 255, nullable: true })
+  passwordHash!: string | null;
 
   // Mantener campo rol para compatibilidad durante migración
   @Column({ type: 'enum', enum: ['admin', 'vendedor'], nullable: true })
@@ -30,6 +31,16 @@ export class User {
   })
   roles!: Role[];
 
+  // OAuth fields
+  @Column({ name: 'google_id', type: 'varchar', length: 255, nullable: true, unique: true })
+  googleId!: string | null;
+
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  avatar!: string | null;
+
+  @Column({ type: 'enum', enum: ['local', 'google'], default: 'local' })
+  provider!: AuthProvider;
+
   @Column({ name: 'refreshTokenHash', type: 'varchar', length: 255, nullable: true })
   refreshTokenHash!: string | null;
 
@@ -39,5 +50,3 @@ export class User {
   @UpdateDateColumn({ name: 'updatedAt', type: 'timestamp with time zone' })
   updatedAt!: Date;
 }
-
-
