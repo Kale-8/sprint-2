@@ -12,7 +12,7 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly jwtService: JwtService,
     private readonly config: ConfigService,
-  ) {}
+  ) { }
 
   private parseDurationToSeconds(input: string | undefined, fallbackSeconds: number): number {
     if (!input) return fallbackSeconds;
@@ -33,7 +33,21 @@ export class AuthService {
   }
 
   async login(user: User) {
-    const payload = { sub: user.id, role: user.rol, email: user.email };
+    // Recargar usuario con roles si no están cargados
+    let userWithRoles = user;
+    if (!user.roles || user.roles.length === 0) {
+      const loaded = await this.userRepository.findOne({
+        where: { id: user.id },
+        relations: ['roles'],
+      });
+      if (loaded) {
+        userWithRoles = loaded;
+      }
+    }
+
+    const roles = userWithRoles.roles.map((role) => role.nombre);
+    const payload = { sub: user.id, email: user.email, roles };
+
     const accessExp = this.parseDurationToSeconds(this.config.get<string>('JWT_ACCESS_EXPIRES') ?? '900', 900);
     const refreshExp = this.parseDurationToSeconds(this.config.get<string>('JWT_REFRESH_EXPIRES') ?? '604800', 604800);
     const accessToken = await this.jwtService.signAsync(payload, {

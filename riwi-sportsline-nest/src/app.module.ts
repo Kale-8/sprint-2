@@ -8,6 +8,8 @@ import { Product } from './products/product.entity';
 import { Client } from './clients/client.entity';
 import { Order } from './orders/order.entity';
 import { OrderItem } from './orders/order-item.entity';
+import { Role } from './auth/entities/role.entity';
+import { Permission } from './auth/entities/permission.entity';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { ClientsModule } from './clients/clients.module';
@@ -36,7 +38,7 @@ import { AuthModule } from './auth/auth.module';
         logging: false,
       }),
     }),
-    TypeOrmModule.forFeature([User, Product, Client, Order, OrderItem]),
+    TypeOrmModule.forFeature([User, Product, Client, Order, OrderItem, Role, Permission]),
     UsersModule,
     ProductsModule,
     ClientsModule,

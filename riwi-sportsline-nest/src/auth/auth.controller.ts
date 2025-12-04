@@ -2,12 +2,13 @@ import { Body, Controller, HttpCode, HttpStatus, Post, Req, UseGuards } from '@n
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
+import { RefreshTokenAuthGuard } from './guards/refresh-token-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
@@ -17,16 +18,11 @@ export class AuthController {
   }
 
   @Post('refresh')
+  @UseGuards(RefreshTokenAuthGuard)
   @HttpCode(HttpStatus.OK)
-  async refresh(@Body() body: { refreshToken: string }) {
-    return this.authService.refresh((await this.decode(body.refreshToken)).sub, body.refreshToken);
-  }
-
-  private async decode(token: string): Promise<any> {
-    // decoded without verification for sub extraction; verification happens in service
-    const parts = token.split('.');
-    const payload = JSON.parse(Buffer.from(parts[1], 'base64').toString('utf8'));
-    return payload;
+  async refresh(@Req() req: any) {
+    const user = req.user;
+    return this.authService.refresh(user.userId, user.refreshToken);
   }
 
   @Post('logout')

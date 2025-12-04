@@ -4,14 +4,19 @@ import { User } from '../users/user.entity';
 import { Client } from '../clients/client.entity';
 import { Product } from '../products/product.entity';
 import { hashString } from '../common/utils/hash.util';
+import { seedRolesAndPermissions } from './roles-permissions.seed';
 
 async function run() {
   await AppDataSource.initialize();
   try {
+    // Seed roles and permissions first
+    await seedRolesAndPermissions(AppDataSource);
+
     const userRepo = AppDataSource.getRepository(User);
     const clientRepo = AppDataSource.getRepository(Client);
     const productRepo = AppDataSource.getRepository(Product);
 
+    // Check if admin user exists (might be created by roles-permissions seed)
     const adminExists = await userRepo.findOne({ where: { email: 'admin@riwi.co' } });
     if (!adminExists) {
       const hashed = await hashString('changeme');
@@ -63,5 +68,3 @@ async function run() {
 }
 
 run();
-
-
