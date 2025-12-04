@@ -1,41 +1,47 @@
-import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import { GlobalExceptionFilter } from './common/filters/https-exception.filter'; 
-import { LoggerMiddleware } from './common/middlewares/logger.middleware'; // opcional si ya lo tienes
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  //  Pipes globales para validación y transformación
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,              // elimina propiedades que no estén en el DTO
-      forbidNonWhitelisted: true,   // lanza error si mandan propiedades desconocidas
-      transform: true,              // convierte el body al tipo del DTO
-    }),
-  );
-
-  
-  app.useGlobalFilters(new GlobalExceptionFilter());
-
-  //  
-  // app.useGlobalInterceptors(new LoggingInterceptor());
-
-  //  Swagger
   const config = new DocumentBuilder()
-    .setTitle('Nike Store API') 
-    .setDescription('API para gestionar usuarios, productos y pedidos')
+    .setTitle('Ecommerce Nike API')
+    .setDescription('API de Ecommerce Nike con todas las autenticaciones')
     .setVersion('1.0')
-    .addBearerAuth()
+
+    // JWT
+    .addBearerAuth(
+      { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+      'JWT',
+    )
+
+    // x-api-key
+    .addApiKey(
+      { type: 'apiKey', name: 'x-api-key', in: 'header' },
+      'API_KEY',
+    )
+
+    // OAuth2 (Google)
+    .addOAuth2(
+      {
+        type: 'oauth2',
+        flows: {
+          authorizationCode: {
+            authorizationUrl: 'http://localhost:3009/auth/google',
+            tokenUrl: 'http://localhost:3009/auth/google/callback',
+            scopes: {},
+          },
+        },
+      },
+      'GoogleOAuth2',
+    )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/api', app, document);
+  SwaggerModule.setup('api', app, document);
 
-  await app.listen(process.env.PORT || 4001);
-  console.log(`Servidor corriendo en http://localhost:4001/api`);
+  await app.listen(3009);
+  console.log('Api Corriendo en http://localhost:3009/api')
 }
-
 bootstrap();

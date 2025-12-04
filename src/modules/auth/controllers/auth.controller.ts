@@ -1,29 +1,21 @@
-import { Controller, Post, Body, UseGuards, Req } from '@nestjs/common';
-import { AuthService } from 'src/modules/auth/services/auth.service';
-import { RolesGuard } from 'src/common/decorators/roles.guard';
-import { Roles } from 'src/common/decorators/roles.decorator';
-import { JwtAuthGuard } from 'src/common/guards/jwt.guard';
+import { Controller, Get, Req, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiOAuth2, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('OAuth2')
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
-
-  @Post('login')
-  async login(@Body() body: { email: string; password: string }) {
-    const user = await this.authService.validateUser(body.email, body.password);
-    return this.authService.login(user);
+  @Get('google')
+  @UseGuards(AuthGuard('google'))
+  @ApiOAuth2([], 'GoogleOAuth2')
+  googleAuth() {
+    // redirige a Google
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Post('refresh')
-  async refresh(@Req() req) {
-    return this.authService.refreshToken(req.user);
-  }
-
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
-  @Post('protected')
-  testProtected() {
-    return { message: 'Ruta protegida solo para admins' };
+  @Get('google/callback')
+  @UseGuards(AuthGuard('google'))
+  @ApiOAuth2([], 'GoogleOAuth2')
+  googleAuthRedirect(@Req() req) {
+    return { message: 'Login exitoso con Google', user: req.user };
   }
 }

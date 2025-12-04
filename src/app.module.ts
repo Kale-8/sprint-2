@@ -10,6 +10,8 @@ import { ClientesModule } from './modules/clientes/clientes.module';
 
 import { validationSchema } from './config/validation';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { ApiKeyModule } from './modules/auth/api-key.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +25,9 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
     ProductosModule,
     PedidosModule,
     ClientesModule,
+    ApiKeyModule,
+    AuthModule
+    
   ],
   controllers: [],
   providers: [CheckService],
