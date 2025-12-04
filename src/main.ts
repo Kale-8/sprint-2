@@ -25,7 +25,7 @@ async function bootstrap() {
 
   //  Swagger
   const config = new DocumentBuilder()
-    .setTitle('Nike Store API') // puedes cambiarlo si quieres
+    .setTitle('Nike Store API') 
     .setDescription('API para gestionar usuarios, productos y pedidos')
     .setVersion('1.0')
     .addBearerAuth()
@@ -34,8 +34,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api', app, document);
 
-  await app.listen(process.env.PORT || 3007);
-  console.log(`Servidor corriendo en http://localhost:3007/api`);
+  await app.listen(process.env.PORT || 4001);
+  console.log(`Servidor corriendo en http://localhost:4001/api`);
 }
 
 bootstrap();
