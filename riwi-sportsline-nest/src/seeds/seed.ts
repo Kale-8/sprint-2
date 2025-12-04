@@ -5,12 +5,16 @@ import { Client } from '../clients/client.entity';
 import { Product } from '../products/product.entity';
 import { hashString } from '../common/utils/hash.util';
 import { seedRolesAndPermissions } from './roles-permissions.seed';
+import { seedApiKeys } from './api-keys.seed';
 
 async function run() {
   await AppDataSource.initialize();
   try {
     // Seed roles and permissions first
     await seedRolesAndPermissions(AppDataSource);
+
+    // Seed API keys
+    await seedApiKeys(AppDataSource);
 
     const userRepo = AppDataSource.getRepository(User);
     const clientRepo = AppDataSource.getRepository(Client);

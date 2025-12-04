@@ -8,13 +8,14 @@ import { Order } from './src/orders/order.entity';
 import { OrderItem } from './src/orders/order-item.entity';
 import { Role } from './src/auth/entities/role.entity';
 import { Permission } from './src/auth/entities/permission.entity';
+import { ApiKey } from './src/auth/entities/api-key.entity';
 
 dotenv.config();
 
 export const AppDataSource = new DataSource({
   type: 'postgres',
   url: process.env.DATABASE_URI,
-  entities: [User, Product, Client, Order, OrderItem, Role, Permission],
+  entities: [User, Product, Client, Order, OrderItem, Role, Permission, ApiKey],
   migrations: ['src/migrations/*.{ts,js}'],
   synchronize: false,
   logging: false,

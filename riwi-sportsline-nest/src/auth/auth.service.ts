@@ -27,6 +27,12 @@ export class AuthService {
   async validateUser(email: string, password: string): Promise<User> {
     const user = await this.userRepository.findOne({ where: { email } });
     if (!user) throw new UnauthorizedException('Invalid credentials');
+
+    // Usuarios OAuth no tienen password
+    if (!user.passwordHash) {
+      throw new UnauthorizedException('This account uses OAuth authentication. Please login with Google.');
+    }
+
     const ok = await compareHash(password, user.passwordHash);
     if (!ok) throw new UnauthorizedException('Invalid credentials');
     return user;
