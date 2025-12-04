@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, Index, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, Index, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Role } from '../auth/entities/role.entity';
 
 export type UserRole = 'admin' | 'vendedor';
 
@@ -17,8 +18,20 @@ export class User {
   @Column({ name: 'passwordHash', type: 'varchar', length: 255 })
   passwordHash!: string;
 
-  @Column({ type: 'enum', enum: ['admin', 'vendedor'] })
-  rol!: UserRole;
+  // Mantener campo rol para compatibilidad durante migración
+  @Column({ type: 'enum', enum: ['admin', 'vendedor'], nullable: true })
+  rol!: UserRole | null;
+
+  @ManyToMany(() => Role, (role) => role.users, { eager: true })
+  @JoinTable({
+    name: 'user_roles',
+    joinColumn: { name: 'user_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'role_id', referencedColumnName: 'id' },
+  })
+  roles!: Role[];
+
+  @Column({ name: 'refreshTokenHash', type: 'varchar', length: 255, nullable: true })
+  refreshTokenHash!: string | null;
 
   @CreateDateColumn({ name: 'createdAt', type: 'timestamp with time zone' })
   createdAt!: Date;
