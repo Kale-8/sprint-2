@@ -7,7 +7,9 @@ describe('ClientsController', () => {
   const mockService = {
     findAll: jest.fn().mockResolvedValue([{ id: 1, nombre: 'Cliente Demo' }]),
     findById: jest.fn().mockResolvedValue({ id: 1, nombre: 'Cliente Demo' }),
-    create: jest.fn().mockImplementation((dto) => Promise.resolve({ id: 1, ...dto })),
+    create: jest
+      .fn()
+      .mockImplementation((dto) => Promise.resolve({ id: 1, ...dto })),
   };
 
   beforeEach(async () => {
@@ -28,9 +30,11 @@ describe('ClientsController', () => {
 
   it('create client', async () => {
     await expect(
-      controller.create({ nombre: 'Nuevo', email: 'nuevo@riwi.co', telefono: '123' }),
+      controller.create({
+        nombre: 'Nuevo',
+        email: 'nuevo@riwi.co',
+        telefono: '123',
+      }),
     ).resolves.toHaveProperty('email', 'nuevo@riwi.co');
   });
 });
-
-

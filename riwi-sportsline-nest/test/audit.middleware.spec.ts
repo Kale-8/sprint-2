@@ -3,7 +3,12 @@ import { AuditMiddleware } from '../src/common/middleware/audit.middleware';
 describe('AuditMiddleware', () => {
   it('calls next and logs', () => {
     const mw = new AuditMiddleware();
-    const req: any = { method: 'GET', originalUrl: '/', headers: {}, ip: '::1' };
+    const req: any = {
+      method: 'GET',
+      originalUrl: '/',
+      headers: {},
+      ip: '::1',
+    };
     const events: any = {};
     const res: any = {
       statusCode: 200,
@@ -20,7 +25,11 @@ describe('AuditMiddleware', () => {
 
   it('rejects non-json content-type on POST', () => {
     const mw = new AuditMiddleware();
-    const req: any = { method: 'POST', originalUrl: '/', headers: { 'content-type': 'text/plain' } };
+    const req: any = {
+      method: 'POST',
+      originalUrl: '/',
+      headers: { 'content-type': 'text/plain' },
+    };
     const res: any = {
       code: 0,
       body: undefined,
@@ -40,5 +49,3 @@ describe('AuditMiddleware', () => {
     expect(next).not.toHaveBeenCalled();
   });
 });
-
-

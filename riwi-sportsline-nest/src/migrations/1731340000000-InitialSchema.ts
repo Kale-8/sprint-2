@@ -4,7 +4,9 @@ export class InitialSchema1731340000000 implements MigrationInterface {
   name = 'InitialSchema1731340000000';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`CREATE TYPE "usuarios_rol_enum" AS ENUM ('admin', 'vendedor')`);
+    await queryRunner.query(
+      `CREATE TYPE "usuarios_rol_enum" AS ENUM ('admin', 'vendedor')`,
+    );
     await queryRunner.query(`
       CREATE TABLE "usuarios" (
         "id" SERIAL PRIMARY KEY,
@@ -40,7 +42,9 @@ export class InitialSchema1731340000000 implements MigrationInterface {
       )
     `);
 
-    await queryRunner.query(`CREATE TYPE "pedidos_estado_enum" AS ENUM ('pendiente', 'confirmado', 'enviado', 'entregado', 'cancelado')`);
+    await queryRunner.query(
+      `CREATE TYPE "pedidos_estado_enum" AS ENUM ('pendiente', 'confirmado', 'enviado', 'entregado', 'cancelado')`,
+    );
     await queryRunner.query(`
       CREATE TABLE "pedidos" (
         "id" SERIAL PRIMARY KEY,
@@ -82,5 +86,3 @@ export class InitialSchema1731340000000 implements MigrationInterface {
     await queryRunner.query(`DROP TYPE "usuarios_rol_enum"`);
   }
 }
-
-

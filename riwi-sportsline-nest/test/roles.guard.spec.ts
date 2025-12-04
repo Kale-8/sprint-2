@@ -8,26 +8,30 @@ const makeContext = (role?: string) =>
     }),
     getHandler: () => ({}),
     getClass: () => ({}),
-  } as any);
+  }) as any;
 
 describe('RolesGuard', () => {
   it('allows when no roles are required', () => {
-    const reflector = { getAllAndOverride: () => undefined } as unknown as Reflector;
+    const reflector = {
+      getAllAndOverride: () => undefined,
+    } as unknown as Reflector;
     const guard = new RolesGuard(reflector);
     expect(guard.canActivate(makeContext('admin'))).toBe(true);
   });
 
   it('denies when user role not present', () => {
-    const reflector = { getAllAndOverride: () => ['admin'] } as unknown as Reflector;
+    const reflector = {
+      getAllAndOverride: () => ['admin'],
+    } as unknown as Reflector;
     const guard = new RolesGuard(reflector);
     expect(guard.canActivate(makeContext('vendedor'))).toBe(false);
   });
 
   it('allows when role matches', () => {
-    const reflector = { getAllAndOverride: () => ['admin'] } as unknown as Reflector;
+    const reflector = {
+      getAllAndOverride: () => ['admin'],
+    } as unknown as Reflector;
     const guard = new RolesGuard(reflector);
     expect(guard.canActivate(makeContext('admin'))).toBe(true);
   });
 });
-
-

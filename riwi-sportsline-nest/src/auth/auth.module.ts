@@ -22,7 +22,14 @@ import { ApiKeysController } from './api-keys.controller';
     JwtModule.register({}),
   ],
   controllers: [AuthController, ApiKeysController],
-  providers: [AuthService, JwtStrategy, RefreshTokenStrategy, ApiKeyStrategy, GoogleStrategy, ApiKeysService],
+  providers: [
+    AuthService,
+    JwtStrategy,
+    RefreshTokenStrategy,
+    ApiKeyStrategy,
+    GoogleStrategy,
+    ApiKeysService,
+  ],
   exports: [AuthService, TypeOrmModule, ApiKeysService],
 })
-export class AuthModule { }
+export class AuthModule {}

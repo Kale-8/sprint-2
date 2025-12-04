@@ -15,7 +15,8 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: (config.get<string>('JWT_ACCESS_SECRET') ?? 'changeme-access') as unknown as string,
+      secretOrKey: (config.get<string>('JWT_ACCESS_SECRET') ??
+        'changeme-access') as unknown as string,
     });
   }
 
@@ -32,7 +33,9 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
 
     // Extraer nombres de roles y permisos
     const roles = user.roles.map((role) => role.nombre);
-    const permissions = user.roles.flatMap((role) => role.permissions.map((p) => p.nombre));
+    const permissions = user.roles.flatMap((role) =>
+      role.permissions.map((p) => p.nombre),
+    );
 
     return {
       userId: payload.sub,
@@ -42,6 +45,3 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     };
   }
 }
-
-
-

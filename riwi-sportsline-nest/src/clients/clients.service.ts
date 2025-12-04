@@ -32,5 +32,3 @@ export class ClientsService {
     await this.clientRepository.delete({ id });
   }
 }
-
-

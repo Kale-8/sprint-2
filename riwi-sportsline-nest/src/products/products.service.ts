@@ -32,5 +32,3 @@ export class ProductsService {
     await this.productRepository.delete({ id });
   }
 }
-
-

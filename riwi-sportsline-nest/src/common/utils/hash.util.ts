@@ -8,5 +8,3 @@ export async function hashString(plain: string): Promise<string> {
 export function compareHash(plain: string, hash: string): Promise<boolean> {
   return bcrypt.compare(plain, hash);
 }
-
-

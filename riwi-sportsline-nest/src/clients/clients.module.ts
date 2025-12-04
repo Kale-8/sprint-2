@@ -11,5 +11,3 @@ import { ClientsController } from './clients.controller';
   exports: [ClientsService],
 })
 export class ClientsModule {}
-
-

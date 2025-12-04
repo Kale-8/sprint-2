@@ -1,15 +1,30 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { RefreshTokenAuthGuard } from './guards/refresh-token-auth.guard';
 import { GoogleAuthGuard } from './guards/google-auth.guard';
-import { ApiBearerAuth, ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBody,
+} from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) { }
+  constructor(private readonly authService: AuthService) {}
 
   @Post('login')
   @HttpCode(HttpStatus.OK)
@@ -21,9 +36,9 @@ export class AuthController {
     schema: {
       example: {
         accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
-        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-      }
-    }
+        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+      },
+    },
   })
   @ApiResponse({ status: 401, description: 'Credenciales inválidas' })
   async login(@Body() dto: LoginDto) {
@@ -39,9 +54,12 @@ export class AuthController {
     schema: {
       type: 'object',
       properties: {
-        refreshToken: { type: 'string', example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...' }
-      }
-    }
+        refreshToken: {
+          type: 'string',
+          example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        },
+      },
+    },
   })
   @ApiResponse({
     status: 200,
@@ -49,11 +67,14 @@ export class AuthController {
     schema: {
       example: {
         accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
-        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-      }
-    }
+        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+      },
+    },
   })
-  @ApiResponse({ status: 401, description: 'Refresh token inválido o expirado' })
+  @ApiResponse({
+    status: 401,
+    description: 'Refresh token inválido o expirado',
+  })
   async refresh(@Req() req: any) {
     const user = req.user;
     return this.authService.refresh(user.userId, user.refreshToken);
@@ -67,14 +88,17 @@ export class AuthController {
   @ApiResponse({ status: 204, description: 'Logout exitoso' })
   @ApiResponse({ status: 401, description: 'No autenticado' })
   async logout(@Req() req: any) {
-    const user = req.user as any;
+    const user = req.user;
     await this.authService.logout(user.userId);
   }
 
   @Get('google')
   @UseGuards(GoogleAuthGuard)
   @ApiOperation({ summary: 'Iniciar login con Google OAuth2' })
-  @ApiResponse({ status: 302, description: 'Redirige a Google para autenticación' })
+  @ApiResponse({
+    status: 302,
+    description: 'Redirige a Google para autenticación',
+  })
   async googleAuth() {
     // Redirige a Google para autenticación
   }
@@ -88,9 +112,9 @@ export class AuthController {
     schema: {
       example: {
         accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
-        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...'
-      }
-    }
+        refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+      },
+    },
   })
   @ApiResponse({ status: 401, description: 'Autenticación OAuth fallida' })
   async googleAuthCallback(@Req() req: any) {
@@ -99,5 +123,3 @@ export class AuthController {
     return this.authService.login(user);
   }
 }
-
-

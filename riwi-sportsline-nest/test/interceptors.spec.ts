@@ -2,7 +2,11 @@ import { of } from 'rxjs';
 import { TransformInterceptor } from '../src/common/interceptors/transform.interceptor';
 import { TimingInterceptor } from '../src/common/interceptors/timing.interceptor';
 
-const ctx: any = { switchToHttp: () => ({ getRequest: () => ({ method: 'GET', originalUrl: '/' }) }) };
+const ctx: any = {
+  switchToHttp: () => ({
+    getRequest: () => ({ method: 'GET', originalUrl: '/' }),
+  }),
+};
 const handler = (data: any) => ({ handle: () => of(data) });
 
 describe('Interceptors', () => {
@@ -23,5 +27,3 @@ describe('Interceptors', () => {
     });
   });
 });
-
-

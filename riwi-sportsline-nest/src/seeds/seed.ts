@@ -21,49 +21,63 @@ async function run() {
     const productRepo = AppDataSource.getRepository(Product);
 
     // Check if admin user exists (might be created by roles-permissions seed)
-    const adminExists = await userRepo.findOne({ where: { email: 'admin@riwi.co' } });
+    const adminExists = await userRepo.findOne({
+      where: { email: 'admin@riwi.co' },
+    });
     if (!adminExists) {
       const hashed = await hashString('changeme');
-      await userRepo.save(userRepo.create({
-        nombre: 'Admin',
-        email: 'admin@riwi.co',
-        passwordHash: hashed,
-        rol: 'admin',
-      }));
+      await userRepo.save(
+        userRepo.create({
+          nombre: 'Admin',
+          email: 'admin@riwi.co',
+          passwordHash: hashed,
+          rol: 'admin',
+        }),
+      );
     }
 
-    const clientExists = await clientRepo.findOne({ where: { email: 'cliente@riwi.co' } });
+    const clientExists = await clientRepo.findOne({
+      where: { email: 'cliente@riwi.co' },
+    });
     if (!clientExists) {
-      await clientRepo.save(clientRepo.create({
-        nombre: 'Cliente Demo',
-        email: 'cliente@riwi.co',
-        telefono: '3000000000',
-      }));
+      await clientRepo.save(
+        clientRepo.create({
+          nombre: 'Cliente Demo',
+          email: 'cliente@riwi.co',
+          telefono: '3000000000',
+        }),
+      );
     }
 
-    const productA = await productRepo.findOne({ where: { codigo: 'SKU-001' } });
+    const productA = await productRepo.findOne({
+      where: { codigo: 'SKU-001' },
+    });
     if (!productA) {
-      await productRepo.save(productRepo.create({
-        codigo: 'SKU-001',
-        nombre: 'Balón fútbol',
-        precio: '100000.00',
-        stock: 50,
-      }));
+      await productRepo.save(
+        productRepo.create({
+          codigo: 'SKU-001',
+          nombre: 'Balón fútbol',
+          precio: '100000.00',
+          stock: 50,
+        }),
+      );
     }
-    const productB = await productRepo.findOne({ where: { codigo: 'SKU-002' } });
+    const productB = await productRepo.findOne({
+      where: { codigo: 'SKU-002' },
+    });
     if (!productB) {
-      await productRepo.save(productRepo.create({
-        codigo: 'SKU-002',
-        nombre: 'Guayos',
-        precio: '250000.00',
-        stock: 20,
-      }));
+      await productRepo.save(
+        productRepo.create({
+          codigo: 'SKU-002',
+          nombre: 'Guayos',
+          precio: '250000.00',
+          stock: 20,
+        }),
+      );
     }
 
-    // eslint-disable-next-line no-console
     console.log('Seed completado.');
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error(err);
     process.exitCode = 1;
   } finally {

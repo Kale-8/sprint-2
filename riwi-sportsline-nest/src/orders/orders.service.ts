@@ -12,14 +12,24 @@ export class OrdersService {
 
   findAll() {
     return this.orderRepository.find({
-      relations: ['cliente', 'vendedor', 'pedidoProductos', 'pedidoProductos.product'],
+      relations: [
+        'cliente',
+        'vendedor',
+        'pedidoProductos',
+        'pedidoProductos.product',
+      ],
     });
   }
 
   findById(id: number) {
     return this.orderRepository.findOne({
       where: { id },
-      relations: ['cliente', 'vendedor', 'pedidoProductos', 'pedidoProductos.product'],
+      relations: [
+        'cliente',
+        'vendedor',
+        'pedidoProductos',
+        'pedidoProductos.product',
+      ],
     });
   }
 
@@ -37,5 +47,3 @@ export class OrdersService {
     await this.orderRepository.delete({ id });
   }
 }
-
-

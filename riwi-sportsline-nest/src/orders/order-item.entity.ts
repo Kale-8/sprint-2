@@ -1,4 +1,11 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Order } from './order.entity';
 import { Product } from '../products/product.entity';
 
@@ -13,10 +20,14 @@ export class OrderItem {
   @Column({ type: 'int' })
   productoId!: number;
 
-  @ManyToOne(() => Order, (order) => order.pedidoProductos, { onDelete: 'CASCADE' })
+  @ManyToOne(() => Order, (order) => order.pedidoProductos, {
+    onDelete: 'CASCADE',
+  })
   pedido!: Order;
 
-  @ManyToOne(() => Product, (product) => product.pedidoProductos, { onDelete: 'RESTRICT' })
+  @ManyToOne(() => Product, (product) => product.pedidoProductos, {
+    onDelete: 'RESTRICT',
+  })
   product!: Product;
 
   @Column({ type: 'int' })
@@ -34,5 +45,3 @@ export class OrderItem {
   @UpdateDateColumn({ name: 'updatedAt', type: 'timestamp with time zone' })
   updatedAt!: Date;
 }
-
-

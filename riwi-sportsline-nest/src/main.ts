@@ -16,7 +16,10 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new HttpAllExceptionsFilter());
-  app.useGlobalInterceptors(new TransformInterceptor(), new TimingInterceptor());
+  app.useGlobalInterceptors(
+    new TransformInterceptor(),
+    new TimingInterceptor(),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Riwi SportsLine API')
@@ -26,10 +29,7 @@ async function bootstrap() {
       { type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
       'bearer',
     )
-    .addApiKey(
-      { type: 'apiKey', name: 'x-api-key', in: 'header' },
-      'api-key',
-    )
+    .addApiKey({ type: 'apiKey', name: 'x-api-key', in: 'header' }, 'api-key')
     .addOAuth2(
       {
         type: 'oauth2',
@@ -37,8 +37,8 @@ async function bootstrap() {
           implicit: {
             authorizationUrl: 'https://accounts.google.com/o/oauth2/auth',
             scopes: {
-              'profile': 'View your profile',
-              'email': 'View your email address',
+              profile: 'View your profile',
+              email: 'View your email address',
             },
           },
         },

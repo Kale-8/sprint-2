@@ -25,5 +25,3 @@ describe('ProductsController (unit)', () => {
     await expect(controller.findOne(1)).resolves.toHaveProperty('id', 1);
   });
 });
-
-

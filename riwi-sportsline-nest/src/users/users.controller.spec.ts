@@ -7,7 +7,9 @@ describe('UsersController (unit)', () => {
   const mockService = {
     findAll: jest.fn().mockResolvedValue([{ id: 1, nombre: 'Admin' }]),
     findById: jest.fn().mockResolvedValue({ id: 1, nombre: 'Admin' }),
-    create: jest.fn().mockImplementation((dto) => Promise.resolve({ id: 1, ...dto })),
+    create: jest
+      .fn()
+      .mockImplementation((dto) => Promise.resolve({ id: 1, ...dto })),
   };
 
   beforeEach(async () => {
@@ -26,5 +28,3 @@ describe('UsersController (unit)', () => {
     await expect(controller.findOne(1)).resolves.toHaveProperty('id', 1);
   });
 });
-
-

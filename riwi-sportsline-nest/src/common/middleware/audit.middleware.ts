@@ -14,17 +14,19 @@ export class AuditMiddleware implements NestMiddleware {
     if (['POST', 'PUT', 'PATCH'].includes(method)) {
       const contentType = req.headers['content-type'] ?? '';
       if (!String(contentType).includes('application/json')) {
-        res.status(415).json({ error: 'Unsupported Media Type. Use application/json' });
+        res
+          .status(415)
+          .json({ error: 'Unsupported Media Type. Use application/json' });
         return;
       }
     }
 
     res.on('finish', () => {
       const durationMs = Date.now() - startedAt;
-      this.logger.log(`${method} ${originalUrl} ${res.statusCode} - ${durationMs}ms - ${ip}`);
+      this.logger.log(
+        `${method} ${originalUrl} ${res.statusCode} - ${durationMs}ms - ${ip}`,
+      );
     });
     next();
   }
 }
-
-

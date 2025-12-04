@@ -12,15 +12,19 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly jwtService: JwtService,
     private readonly config: ConfigService,
-  ) { }
+  ) {}
 
-  private parseDurationToSeconds(input: string | undefined, fallbackSeconds: number): number {
+  private parseDurationToSeconds(
+    input: string | undefined,
+    fallbackSeconds: number,
+  ): number {
     if (!input) return fallbackSeconds;
     const m = input.match(/^(\d+)([smhd])?$/i);
     if (!m) return fallbackSeconds;
     const value = parseInt(m[1], 10);
     const unit = (m[2] || 's').toLowerCase();
-    const factor = unit === 's' ? 1 : unit === 'm' ? 60 : unit === 'h' ? 3600 : 86400;
+    const factor =
+      unit === 's' ? 1 : unit === 'm' ? 60 : unit === 'h' ? 3600 : 86400;
     return value * factor;
   }
 
@@ -30,7 +34,9 @@ export class AuthService {
 
     // Usuarios OAuth no tienen password
     if (!user.passwordHash) {
-      throw new UnauthorizedException('This account uses OAuth authentication. Please login with Google.');
+      throw new UnauthorizedException(
+        'This account uses OAuth authentication. Please login with Google.',
+      );
     }
 
     const ok = await compareHash(password, user.passwordHash);
@@ -54,8 +60,14 @@ export class AuthService {
     const roles = userWithRoles.roles.map((role) => role.nombre);
     const payload = { sub: user.id, email: user.email, roles };
 
-    const accessExp = this.parseDurationToSeconds(this.config.get<string>('JWT_ACCESS_EXPIRES') ?? '900', 900);
-    const refreshExp = this.parseDurationToSeconds(this.config.get<string>('JWT_REFRESH_EXPIRES') ?? '604800', 604800);
+    const accessExp = this.parseDurationToSeconds(
+      this.config.get<string>('JWT_ACCESS_EXPIRES') ?? '900',
+      900,
+    );
+    const refreshExp = this.parseDurationToSeconds(
+      this.config.get<string>('JWT_REFRESH_EXPIRES') ?? '604800',
+      604800,
+    );
     const accessToken = await this.jwtService.signAsync(payload, {
       secret: this.config.get<string>('JWT_ACCESS_SECRET'),
       expiresIn: accessExp,
@@ -65,7 +77,10 @@ export class AuthService {
       expiresIn: refreshExp,
     } as any);
     const refreshHash = await hashString(refreshToken);
-    await this.userRepository.update({ id: user.id }, { refreshTokenHash: refreshHash });
+    await this.userRepository.update(
+      { id: user.id },
+      { refreshTokenHash: refreshHash },
+    );
     return { accessToken, refreshToken };
   }
 
@@ -78,8 +93,9 @@ export class AuthService {
   }
 
   async logout(userId: number) {
-    await this.userRepository.update({ id: userId }, { refreshTokenHash: null });
+    await this.userRepository.update(
+      { id: userId },
+      { refreshTokenHash: null },
+    );
   }
 }
-
-

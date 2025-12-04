@@ -1,4 +1,12 @@
-import { Column, CreateDateColumn, Entity, Index, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Order } from '../orders/order.entity';
 
 @Entity({ name: 'clientes' })
@@ -25,5 +33,3 @@ export class Client {
   @OneToMany(() => Order, (order) => order.cliente)
   pedidos!: Order[];
 }
-
-

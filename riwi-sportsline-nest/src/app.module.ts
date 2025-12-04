@@ -24,7 +24,9 @@ import { AuthModule } from './auth/auth.module';
       isGlobal: true,
       envFilePath: ['.env'],
       validationSchema: Joi.object({
-        NODE_ENV: Joi.string().valid('development', 'test', 'production').default('development'),
+        NODE_ENV: Joi.string()
+          .valid('development', 'test', 'production')
+          .default('development'),
         PORT: Joi.number().port().default(3000),
         DATABASE_URI: Joi.string().uri().required(),
       }),
@@ -39,7 +41,16 @@ import { AuthModule } from './auth/auth.module';
         logging: false,
       }),
     }),
-    TypeOrmModule.forFeature([User, Product, Client, Order, OrderItem, Role, Permission, ApiKey]),
+    TypeOrmModule.forFeature([
+      User,
+      Product,
+      Client,
+      Order,
+      OrderItem,
+      Role,
+      Permission,
+      ApiKey,
+    ]),
     UsersModule,
     ProductsModule,
     ClientsModule,

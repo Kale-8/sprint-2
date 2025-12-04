@@ -16,7 +16,7 @@ const mockHost = () =>
       }),
       getRequest: () => ({ url: '/x', method: 'GET' }),
     }),
-  } as unknown as ArgumentsHost);
+  }) as unknown as ArgumentsHost;
 
 describe('HttpAllExceptionsFilter', () => {
   it('formats HttpException', () => {
@@ -28,5 +28,3 @@ describe('HttpAllExceptionsFilter', () => {
     expect(res.body.error.statusCode).toBe(400);
   });
 });
-
-
